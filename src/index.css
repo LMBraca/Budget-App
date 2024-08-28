@@ -1,0 +1,95 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: whitesmoke;
+  margin: 0;
+}
+
+h1 {
+  color: gray;
+  font-style: italic;
+  font-weight: inherit;
+  font-size: 3.73rem;
+  text-align: center;
+  margin: 20px 0; 
+}
+
+main {
+  background-color: white;
+  max-width: 1000px;
+  min-width: 700px;
+  margin: 20px auto; 
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px #0003, 0 25px 50px #0000001a;
+  padding: 10px; 
+}
+
+/* Container for widgets */
+.widget-container {
+  display: flex;
+  gap: 1rem; /* Space between widgets */
+  padding: 10px; /* Padding around the widget container */
+}
+
+
+
+main > div {
+  padding: 0.5rem;
+  border-bottom: 1px solid lightgrey;
+  display: flex;
+  flex-direction: column; 
+  gap: 0.5rem; 
+}
+
+main > div h2 {
+  margin: 0;
+  font-size: 2rem;
+  padding-left: 1.5rem;
+  
+}
+
+main > div h3 {
+  margin: 0;
+  font-size: 1.6rem;
+  padding-left: 1.5rem;
+}
+
+main > div h4 {
+  margin: 0;
+  font-size: 1rem;
+  padding-left: 1.5rem;
+}
+
+p {
+  margin: 0;
+}
+
+.widget {
+  background-color: #f9f9f9;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
+  padding: 10px; /* Increase padding for content */
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Prevent content overflow */
+  
+}
+
+/* Adjust layout of items inside the widget */
+.row {
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.react-grid-item > .react-resizable-handle::after {
+  content: "";
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  width: 5px;
+  height: 5px;
+  border-right: 2px solid rgba(0, 0, 0, 0.4);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.4); 
+}

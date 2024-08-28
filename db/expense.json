@@ -1,0 +1,132 @@
+[
+  {
+    "expense": 800,
+    "description": "Amigas",
+    "location": "Mosca",
+    "id": 2
+  },
+  {
+    "expense": 4,
+    "description": "Tacos",
+    "location": "Vichys",
+    "date": "2024-08-28T00:49:45.528Z",
+    "id": 3
+  },
+  {
+    "expense": 200,
+    "description": "Books",
+    "location": "New York",
+    "id": 4
+  },
+  {
+    "expense": 50,
+    "description": "Coffee",
+    "location": "Paris",
+    "date": "2024-08-28T08:15:22.134Z",
+    "id": 5
+  },
+  {
+    "expense": 100,
+    "description": "Groceries",
+    "location": "Berlin",
+    "id": 6
+  },
+  {
+    "expense": 1200,
+    "description": "Flight",
+    "location": "Tokyo",
+    "date": "2024-08-28T14:30:45.000Z",
+    "id": 7
+  },
+  {
+    "expense": 60,
+    "description": "Dinner",
+    "location": "Moscow",
+    "id": 8
+  },
+  {
+    "expense": 300,
+    "description": "Hotel",
+    "location": "London",
+    "date": "2024-08-28T18:05:33.654Z",
+    "id": 9
+  },
+  {
+    "expense": 500,
+    "description": "Conference",
+    "location": "Los Angeles",
+    "id": 10
+  },
+  {
+    "expense": 45,
+    "description": "Taxi",
+    "location": "Toronto",
+    "date": "2024-08-28T22:40:21.789Z",
+    "id": 11
+  },
+  {
+    "expense": 75,
+    "description": "Museum",
+    "location": "Rome",
+    "id": 12
+  },
+  {
+    "expense": 25,
+    "description": "Snacks",
+    "location": "Madrid",
+    "date": "2024-08-28T12:15:10.000Z",
+    "id": 13
+  },
+  {
+    "expense": 150,
+    "description": "Souvenirs",
+    "location": "Dubai",
+    "id": 14
+  },
+  {
+    "expense": 40,
+    "description": "Lunch",
+    "location": "Bangkok",
+    "date": "2024-08-28T10:55:50.321Z",
+    "id": 15
+  },
+  {
+    "expense": 300,
+    "description": "Gifts",
+    "location": "Istanbul",
+    "id": 16
+  },
+  {
+    "expense": 500,
+    "description": "Car Rental",
+    "location": "Lisbon",
+    "date": "2024-08-28T20:05:11.111Z",
+    "id": 17
+  },
+  {
+    "expense": 20,
+    "description": "Subway",
+    "location": "Seoul",
+    "id": 18
+  },
+  {
+    "expense": 35,
+    "description": "Ice Cream",
+    "location": "Athens",
+    "date": "2024-08-28T15:00:25.789Z",
+    "id": 19
+  },
+  {
+    "expense": 90,
+    "description": "Concert",
+    "location": "Sydney",
+    "id": 20
+  },
+  {
+    "expense": 400,
+    "description": "Excursion",
+    "location": "Cairo",
+    "date": "2024-08-28T07:25:40.123Z",
+    "id": 21
+  }
+]
