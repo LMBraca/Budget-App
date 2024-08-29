@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import GridLayout from 'react-grid-layout';
 import './App.css';
 import { Expense } from './shared/expense';
+import OverallExpensesWidget from './components/widgets/OverallExpensesWidget';
+import WeeklyExpensesWidget from './components/widgets/WeeklyExpensesWidget';
+import { fetchExpenses } from './services/expenseService';
 import { remult } from 'remult';
 import 'react-grid-layout/css/styles.css';
 
@@ -11,7 +14,7 @@ function App() {
   const [expenses, setExpenses] = useState<Expense[]>([]);
 
   useEffect(() => {
-    expenseRepo.find({}).then(setExpenses);
+    fetchExpenses().then(setExpenses);
   }, []);
 
   const layout = [
