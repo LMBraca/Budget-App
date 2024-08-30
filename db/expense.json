@@ -3,7 +3,8 @@
     "expense": 800,
     "description": "Amigas",
     "location": "Mosca",
-    "id": 2
+    "id": 2,
+    "date": "2024-08-15T14:30:45.000Z"
   },
   {
     "expense": 4,
@@ -16,7 +17,8 @@
     "expense": 200,
     "description": "Books",
     "location": "New York",
-    "id": 4
+    "id": 4,
+    "date": "2024-08-16T11:20:35.000Z"
   },
   {
     "expense": 50,
@@ -29,7 +31,8 @@
     "expense": 100,
     "description": "Groceries",
     "location": "Berlin",
-    "id": 6
+    "id": 6,
+    "date": "2024-08-17T09:10:25.000Z"
   },
   {
     "expense": 1200,
@@ -42,7 +45,8 @@
     "expense": 60,
     "description": "Dinner",
     "location": "Moscow",
-    "id": 8
+    "id": 8,
+    "date": "2024-08-20T19:45:30.000Z"
   },
   {
     "expense": 300,
@@ -55,7 +59,8 @@
     "expense": 500,
     "description": "Conference",
     "location": "Los Angeles",
-    "id": 10
+    "id": 10,
+    "date": "2024-08-22T13:15:50.000Z"
   },
   {
     "expense": 45,
@@ -68,7 +73,8 @@
     "expense": 75,
     "description": "Museum",
     "location": "Rome",
-    "id": 12
+    "id": 12,
+    "date": "2024-08-18T10:05:40.000Z"
   },
   {
     "expense": 25,
@@ -81,7 +87,8 @@
     "expense": 150,
     "description": "Souvenirs",
     "location": "Dubai",
-    "id": 14
+    "id": 14,
+    "date": "2024-08-19T15:25:55.000Z"
   },
   {
     "expense": 40,
@@ -94,7 +101,8 @@
     "expense": 300,
     "description": "Gifts",
     "location": "Istanbul",
-    "id": 16
+    "id": 16,
+    "date": "2024-08-21T17:05:15.000Z"
   },
   {
     "expense": 500,
@@ -107,7 +115,8 @@
     "expense": 20,
     "description": "Subway",
     "location": "Seoul",
-    "id": 18
+    "id": 18,
+    "date": "2024-08-14T09:20:30.000Z"
   },
   {
     "expense": 35,
@@ -120,7 +129,8 @@
     "expense": 90,
     "description": "Concert",
     "location": "Sydney",
-    "id": 20
+    "id": 20,
+    "date": "2024-08-23T16:10:45.000Z"
   },
   {
     "expense": 400,

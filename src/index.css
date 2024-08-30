@@ -10,12 +10,12 @@ h1 {
   font-weight: inherit;
   font-size: 3.73rem;
   text-align: center;
-  margin: 20px 0; 
+  margin: 20px; 
 }
 
 main {
   background-color: white;
-  max-width: 1000px;
+  max-width: 1200px;
   min-width: 700px;
   margin: 20px auto; 
   border: 1px solid lightgray;
@@ -28,13 +28,11 @@ main {
 .widget-container {
   display: flex;
   gap: 1rem; /* Space between widgets */
-  padding: 10px; /* Padding around the widget container */
 }
 
 
 
 main > div {
-  padding: 0.5rem;
   border-bottom: 1px solid lightgrey;
   display: flex;
   flex-direction: column; 
@@ -61,18 +59,11 @@ main > div h4 {
 }
 
 p {
+  color: #adadad;
+  font-style: italic;
+  padding-bottom: 3px;
+  text-align: center;
   margin: 0;
-}
-
-.widget {
-  background-color: #f9f9f9;
-  border: 1px solid lightgray;
-  border-radius: 0.5rem;
-  padding: 10px; /* Increase padding for content */
-  box-sizing: border-box;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden; /* Prevent content overflow */
-  
 }
 
 /* Adjust layout of items inside the widget */
@@ -81,4 +72,43 @@ p {
   padding: 8px;
   align-items: center;
   gap: 0.5rem;
+}
+
+.widget {
+  overflow-y: auto; /* Enable vertical scrolling */
+  background-color: #f9f9f9;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.widget::-webkit-scrollbar {
+  width: 4px; /* Narrower scrollbar width */
+}
+
+.widget::-webkit-scrollbar-track {
+  background: #f5f5f5; /* Light, neutral background for the track */
+}
+
+.widget::-webkit-scrollbar-thumb {
+  background-color: #c0c0c0; /* Subtle color for the thumb */
+  border-radius: 10px; /* Rounded edges for a softer appearance */
+}
+
+.widget::-webkit-scrollbar-thumb:hover {
+  background-color: #a0a0a0; /* Slightly darker when hovering */
+}
+
+/* Firefox scrollbar style */
+.widget {
+  scrollbar-width: thin; /* Thinner scrollbar in Firefox */
+  scrollbar-color: #c0c0c0 #f5f5f5; /* Thumb and track colors */
+}
+
+/* Prevent text selection with cross-browser compatibility */
+body, .widget-container {
+  -webkit-user-select: none; /* Safari and older iOS versions */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Standard property */
 }
