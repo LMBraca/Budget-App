@@ -7,6 +7,7 @@ import WeeklyExpensesWidget from "./components/widgets/WeeklyExpensesWidget";
 import { fetchExpenses } from "./services/expenseService";
 import { remult } from "remult";
 import "react-grid-layout/css/styles.css";
+import LineChartExpensesWidget from "./components/widgets/LineChartExpensesWidget";
 
 const expenseRepo = remult.repo(Expense);
 
@@ -19,7 +20,8 @@ function App() {
 
   const layout = [
     { i: "widget1", x: 0, y: 0, w: 2, h: 3 },
-    { i: "widget2", x: 0, y: 0, w: 3, h: 3 },
+    { i: "widget2", x: 2, y: 0, w: 3, h: 3 }, // Adjusted x and y values to prevent overlap
+    { i: "widget3", x: 0, y: 3, w: 6, h: 5 }, // Adjusted y to prevent overlap
   ];
 
   const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
@@ -45,6 +47,9 @@ function App() {
           </div>
           <div key="widget2" className="widget" onDragStart={handleDragStart}>
             <WeeklyExpensesWidget expenses={expenses} />
+          </div>
+          <div key="widget3" className="widget" onDragStart={handleDragStart}>
+            <LineChartExpensesWidget expenses={expenses} />
           </div>
         </GridLayout>
       </main>

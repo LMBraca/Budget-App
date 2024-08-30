@@ -1,142 +1,149 @@
 [
   {
-    "expense": 800,
-    "description": "Amigas",
-    "location": "Mosca",
+    "expense": 129,
+    "description": "hamburguesa",
+    "location": "eat",
+    "id": 1,
+    "date": "2024-08-08T14:51:00.000Z"
+  },
+  {
+    "expense": 51,
+    "description": "nieve",
+    "location": "dq",
     "id": 2,
-    "date": "2024-08-15T14:30:45.000Z"
+    "date": "2024-08-08T16:02:00.000Z"
   },
   {
-    "expense": 4,
-    "description": "Tacos",
-    "location": "Vichys",
-    "date": "2024-08-28T00:49:45.528Z",
-    "id": 3
+    "expense": 800,
+    "description": "snoopy",
+    "location": "disfrazlandia",
+    "id": 3,
+    "date": "2024-08-09T15:03:00.000Z"
   },
   {
-    "expense": 200,
-    "description": "Books",
-    "location": "New York",
+    "expense": 760,
+    "description": "stanley",
+    "location": "starbucks",
     "id": 4,
-    "date": "2024-08-16T11:20:35.000Z"
+    "date": "2024-08-09T15:44:00.000Z"
   },
   {
-    "expense": 50,
-    "description": "Coffee",
-    "location": "Paris",
-    "date": "2024-08-28T08:15:22.134Z",
-    "id": 5
+    "expense": 85,
+    "description": "regalo envoltura",
+    "location": "papelería",
+    "id": 5,
+    "date": "2024-08-10T10:03:00.000Z"
+  },
+  {
+    "expense": 567,
+    "description": "desayuno",
+    "location": "pancita house",
+    "id": 6,
+    "date": "2024-08-10T11:20:00.000Z"
+  },
+  {
+    "expense": 120,
+    "description": "accesorios",
+    "location": "voy",
+    "id": 7,
+    "date": "2024-08-10T11:45:00.000Z"
+  },
+  {
+    "expense": 160,
+    "description": "antro",
+    "location": "izakaya",
+    "id": 8,
+    "date": "2024-08-10T21:43:00.000Z"
   },
   {
     "expense": 100,
-    "description": "Groceries",
-    "location": "Berlin",
-    "id": 6,
-    "date": "2024-08-17T09:10:25.000Z"
+    "description": "antro",
+    "location": "izakaya",
+    "id": 9,
+    "date": "2024-08-10T23:13:00.000Z"
   },
   {
-    "expense": 1200,
-    "description": "Flight",
-    "location": "Tokyo",
-    "date": "2024-08-28T14:30:45.000Z",
-    "id": 7
-  },
-  {
-    "expense": 60,
-    "description": "Dinner",
-    "location": "Moscow",
-    "id": 8,
-    "date": "2024-08-20T19:45:30.000Z"
-  },
-  {
-    "expense": 300,
-    "description": "Hotel",
-    "location": "London",
-    "date": "2024-08-28T18:05:33.654Z",
-    "id": 9
-  },
-  {
-    "expense": 500,
-    "description": "Conference",
-    "location": "Los Angeles",
+    "expense": 853,
+    "description": "gasolina",
+    "location": "rendichicas",
     "id": 10,
-    "date": "2024-08-22T13:15:50.000Z"
+    "date": "2024-08-12T06:01:00.000Z"
   },
   {
-    "expense": 45,
-    "description": "Taxi",
-    "location": "Toronto",
-    "date": "2024-08-28T22:40:21.789Z",
-    "id": 11
+    "expense": 344,
+    "description": "teléfono",
+    "location": "",
+    "id": 11,
+    "date": "2024-08-15T13:46:00.000Z"
   },
   {
-    "expense": 75,
-    "description": "Museum",
-    "location": "Rome",
+    "expense": 100,
+    "description": "poker",
+    "location": "iccfest",
     "id": 12,
-    "date": "2024-08-18T10:05:40.000Z"
+    "date": "2024-08-16T23:48:00.000Z"
   },
   {
-    "expense": 25,
-    "description": "Snacks",
-    "location": "Madrid",
-    "date": "2024-08-28T12:15:10.000Z",
-    "id": 13
+    "expense": 2800,
+    "description": "ana regalo",
+    "location": "mercado libre",
+    "id": 13,
+    "date": "2024-08-17T11:41:00.000Z"
   },
   {
-    "expense": 150,
-    "description": "Souvenirs",
-    "location": "Dubai",
+    "expense": 125,
+    "description": "steph",
+    "location": "",
     "id": 14,
-    "date": "2024-08-19T15:25:55.000Z"
+    "date": "2024-08-18T20:48:00.000Z"
   },
   {
-    "expense": 40,
-    "description": "Lunch",
-    "location": "Bangkok",
-    "date": "2024-08-28T10:55:50.321Z",
-    "id": 15
+    "expense": 100,
+    "description": "café",
+    "location": "lugar de scrabble",
+    "id": 15,
+    "date": "2024-08-20T14:15:00.000Z"
   },
   {
-    "expense": 300,
-    "description": "Gifts",
-    "location": "Istanbul",
+    "expense": 17,
+    "description": "icloud",
+    "location": "",
     "id": 16,
-    "date": "2024-08-21T17:05:15.000Z"
+    "date": "2024-08-21T18:33:00.000Z"
   },
   {
-    "expense": 500,
-    "description": "Car Rental",
-    "location": "Lisbon",
-    "date": "2024-08-28T20:05:11.111Z",
-    "id": 17
+    "expense": 67,
+    "description": "civilization 5",
+    "location": "steam",
+    "id": 17,
+    "date": "2024-08-22T17:44:00.000Z"
   },
   {
-    "expense": 20,
-    "description": "Subway",
-    "location": "Seoul",
+    "expense": 130,
+    "description": "tacos",
+    "location": "rogers",
     "id": 18,
-    "date": "2024-08-14T09:20:30.000Z"
+    "date": "2024-08-23T07:07:00.000Z"
   },
   {
-    "expense": 35,
-    "description": "Ice Cream",
-    "location": "Athens",
-    "date": "2024-08-28T15:00:25.789Z",
-    "id": 19
+    "expense": 331,
+    "description": "gasolina",
+    "location": "rendichicas",
+    "id": 19,
+    "date": "2024-08-23T15:48:00.000Z"
   },
   {
-    "expense": 90,
-    "description": "Concert",
-    "location": "Sydney",
+    "expense": 139,
+    "description": "pisto casa edgar",
+    "location": "oxxo",
     "id": 20,
-    "date": "2024-08-23T16:10:45.000Z"
+    "date": "2024-08-24T19:05:00.000Z"
   },
   {
-    "expense": 400,
-    "description": "Excursion",
-    "location": "Cairo",
-    "date": "2024-08-28T07:25:40.123Z",
-    "id": 21
+    "expense": 130,
+    "description": "papa",
+    "location": "tres pablos",
+    "id": 21,
+    "date": "2024-08-27T22:17:00.000Z"
   }
 ]
