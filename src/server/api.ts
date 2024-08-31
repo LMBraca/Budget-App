@@ -1,6 +1,15 @@
-import { remultExpress } from "remult/remult-express";
-import { Expense } from "../shared/expense";
+import express from "express";
+import { fetchExpenses } from "../services/expenseService";
 
-export const api = remultExpress({
-    entities: [Expense],
-}) 
+const router = express.Router();
+
+router.get("/expenses", async (req, res) => {
+    try {
+        const expenses = await fetchExpenses();
+        res.json(expenses);
+    } catch (error) {
+        res.status(500).json({ message: "Failed to fetch expenses" });
+    }
+});
+
+export const api = router;
