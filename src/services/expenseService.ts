@@ -15,7 +15,8 @@ export const fetchExpenses = async (): Promise<Expense[]> => {
     // Convert rows to Expense objects
     const expenses: Expense[] = rows.slice(1).map((row: string[], index: number) => ({
       id: index + 1,
-      date: new Date(row[0]),  // Assuming the first column is date
+      date: new Date(row[0]), 
+      time: row[1], // Assuming the first column is date
       expense: parseFloat(row[2]),  // Assuming the third column is expense
       description: row[3],  // Assuming the fourth column is description
       location: row[4]  // Assuming the fifth column is location

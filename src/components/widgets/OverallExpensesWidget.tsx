@@ -34,6 +34,10 @@ const OverallExpensesWidget: React.FC<Props> = ({ expenses }) => {
               <p>{expense.location}</p>
             </div>
             <div className="row">
+              <h4>Time:</h4>
+              <p>{expense.time}</p>
+            </div>
+            <div className="row">
               <h4>Date:</h4>
               <p>
                 {expense.date

@@ -15,4 +15,6 @@ export class Expense {
     location = "";
     @Fields.date()
     date = new Date();
+    @Fields.string()
+    time = "";
 }

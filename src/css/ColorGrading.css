@@ -1,0 +1,49 @@
+.weekly-total h4 {
+    font-weight: bold;
+  }
+  
+  /* Smooth Gradient from green to red */
+  .total-0 h4 {
+    color: rgb(0, 255, 0); /* Green */
+  }
+  
+  .total-1 h4 {
+    color: rgb(51, 230, 0);
+  }
+  
+  .total-2 h4 {
+    color: rgb(102, 204, 0);
+  }
+  
+  .total-3 h4 {
+    color: rgb(153, 179, 0);
+  }
+  
+  .total-4 h4 {
+    color: rgb(204, 153, 0);
+  }
+  
+  .total-5 h4 {
+    color: rgb(255, 128, 0); /* Orange */
+  }
+  
+  .total-6 h4 {
+    color: rgb(255, 102, 0);
+  }
+  
+  .total-7 h4 {
+    color: rgb(255, 77, 0);
+  }
+  
+  .total-8 h4 {
+    color: rgb(255, 51, 0);
+  }
+  
+  .total-9 h4 {
+    color: rgb(255, 26, 0);
+  }
+  
+  .total-10 h4 {
+    color: rgb(255, 0, 0); /* Red */
+  }
+  
