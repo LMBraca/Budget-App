@@ -26,10 +26,12 @@ const WeeklyExpensesWidget: React.FC<Props> = ({ expenses }) => {
   const endOfWeek = new Date(startOfWeek);
   endOfWeek.setDate(startOfWeek.getDate() + 6);
 
-  const weeklyExpenses = expenses.filter((expense) => {
-    const expenseDate = new Date(expense.date);
-    return expenseDate >= startOfWeek && expenseDate <= endOfWeek;
-  });
+  const weeklyExpenses = expenses
+    .filter((expense) => {
+      const expenseDate = new Date(expense.date);
+      return expenseDate >= startOfWeek && expenseDate <= endOfWeek;
+    })
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()); // Sort by date, newest first
 
   const weeklyTotal = weeklyExpenses.reduce(
     (total, expense) => total + expense.expense,
