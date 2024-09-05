@@ -1,0 +1,123 @@
+/* General styles */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: whitesmoke;
+  margin: 0;
+}
+
+.auth-page {
+  max-width: 400px;
+  margin: 50px auto;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px #0003, 0 10px 20px #0000001a;
+  padding: 20px;
+}
+
+h2 {
+  color: gray;
+  font-style: italic;
+  font-weight: normal;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+/* Flexbox layout for form */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* Space between form elements */
+  width: 100%; /* Ensure form spans the full width of the container */
+}
+
+/* Consistent label styling */
+label {
+  font-size: 1.2rem;
+  color: gray;
+  width: 100%; /* Labels span the full width */
+  text-align: left; /* Align labels to the left */
+  margin-bottom: 5px;
+}
+
+/* Flexbox input container */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Inputs span the full width */
+}
+
+/* Standardized input fields */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease-in-out;
+  box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  border-color: #a0a0a0;
+}
+
+/* Flexbox button container */
+.button-container {
+  display: flex;
+  width: 100%;
+}
+
+button {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: grey;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  margin-top: 10px;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: black;
+}
+
+/* Error message */
+p {
+  color: #e74c3c;
+  text-align: center;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .auth-page {
+    padding: 15px;
+    margin: 30px auto;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  input[type="text"], input[type="password"] {
+    padding: 8px;
+  }
+
+  button {
+    font-size: 1rem;
+  }
+}

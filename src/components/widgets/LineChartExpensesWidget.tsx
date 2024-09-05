@@ -124,7 +124,7 @@ const LineChartExpensesWidget: React.FC<Props> = ({ expenses }) => {
       <div className="widget-header">
         <h2>Expenses Line Chart</h2>
         <br />
-        <div className="xaxis-buttons">
+        <div className="xaxis-buttons row">
           <button
             className="nav-button no-drag"
             onClick={() => handleXAxisTypeChange("day")}

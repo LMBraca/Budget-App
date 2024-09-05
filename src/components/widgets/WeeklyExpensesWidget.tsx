@@ -10,7 +10,7 @@ interface Props {
 const WeeklyExpensesWidget: React.FC<Props> = ({ expenses }) => {
   const [weekOffset, setWeekOffset] = useState(0);
 
-  const getThursdayOfCurrentWeek = (offset: number) => {
+  const getThursdayOfLastWeek = (offset: number) => {
     const now = new Date();
     const dayOfWeek = now.getDay(); // Sunday is 0, Saturday is 6
     const distanceToThursday = (dayOfWeek + 3) % 7; // 0 if Thursday, positive otherwise
@@ -22,9 +22,10 @@ const WeeklyExpensesWidget: React.FC<Props> = ({ expenses }) => {
     return thursday;
   };
 
-  const startOfWeek = getThursdayOfCurrentWeek(weekOffset);
+  const startOfWeek = getThursdayOfLastWeek(weekOffset);
   const endOfWeek = new Date(startOfWeek);
   endOfWeek.setDate(startOfWeek.getDate() + 6);
+  endOfWeek.setHours(23, 59, 59, 999); // Set to the end of the day (23:59:59.999)
 
   const weeklyExpenses = expenses
     .filter((expense) => {
@@ -103,15 +104,23 @@ const WeeklyExpensesWidget: React.FC<Props> = ({ expenses }) => {
               </div>
               <div className="row">
                 <h4>Location:</h4>
-                <p>{expense.location}</p>
-              </div>
-              <div className="row">
-                <h4>Time:</h4>
-                <p>{expense.time}</p>
+                <p>
+                  {expense.location
+                    ? expense.location
+                    : "No location available"}
+                </p>
               </div>
               <div className="row">
                 <h4>Date:</h4>
                 <p>{new Date(expense.date).toLocaleDateString()}</p>
+              </div>
+              <div className="row">
+                <h4>Time:</h4>
+                <p>
+                  {expense.date
+                    ? new Date(expense.date).toLocaleTimeString()
+                    : "No time available"}
+                </p>
               </div>
               <hr />
             </div>
