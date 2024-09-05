@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: whitesmoke;
+    margin: 0;
+  }
+  
+  h1 {
+    color: gray;
+    font-style: italic;
+    font-weight: inherit;
+    font-size: 3.73rem;
+    text-align: center;
+    margin: 20px; 
+  }
+  
+  main {
+    background-color: white;
+    max-width: 1200px;
+    min-width: 700px;
+    margin: 20px auto; 
+    border: 1px solid lightgray;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px #0003, 0 25px 50px #0000001a;
+    padding: 10px; 
+  }
+  
+  /* Container for widgets */
+  .widget-container {
+    display: flex;
+    gap: 1rem; /* Space between widgets */
+  }
+  
+  
+  
+  main > div {
+    border-bottom: 1px solid lightgrey;
+    display: flex;
+    flex-direction: column; 
+    gap: 0.5rem; 
+  }
+  
+  main > div h2 {
+    margin: 0;
+    font-size: 2rem;
+    padding-left: 1.5rem;
+    
+  }
+  
+  main > div h3 {
+    margin: 0;
+    font-size: 1.6rem;
+    padding-left: 1.5rem;
+  }
+  
+  main > div h4 {
+    margin: 0;
+    font-size: 1rem;
+    padding-left: 1.5rem;
+  }
+  
+  p {
+    color: #adadad;
+    font-style: italic;
+    padding-bottom: 3px;
+    text-align: center;
+    margin: 0;
+  }
+  
+  /* Adjust layout of items inside the widget */
+  .row {
+    display: flex;
+    padding: 8px;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .widget {
+    overflow-y: auto; /* Enable vertical scrolling */
+    background-color: #f9f9f9;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .widget::-webkit-scrollbar {
+    width: 4px; /* Narrower scrollbar width */
+  }
+  
+  .widget::-webkit-scrollbar-track {
+    background: #f5f5f5; /* Light, neutral background for the track */
+  }
+  
+  .widget::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0; /* Subtle color for the thumb */
+    border-radius: 10px; /* Rounded edges for a softer appearance */
+  }
+  
+  .widget::-webkit-scrollbar-thumb:hover {
+    background-color: #a0a0a0; /* Slightly darker when hovering */
+  }
+  
+  /* Firefox scrollbar style */
+  .widget {
+    scrollbar-width: thin; /* Thinner scrollbar in Firefox */
+    scrollbar-color: #c0c0c0 #f5f5f5; /* Thumb and track colors */
+  }
+  
+  /* Prevent text selection with cross-browser compatibility */
+  body, .widget-container {
+    -webkit-user-select: none; /* Safari and older iOS versions */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Standard property */
+  }
+  

@@ -14,10 +14,13 @@
   .week-range {
     font-weight: bold;
     color: #333;
+    text-wrap:nowrap;
+    padding: 10px 15px;
   }
   
   .nav-button {
     background-color: grey;
+    font-size: 16px;
     color: white;
     border: none;
     border-radius: 4px;

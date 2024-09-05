@@ -31,11 +31,9 @@ const OverallExpensesWidget: React.FC<Props> = ({ expenses }) => {
             </div>
             <div className="row">
               <h4>Location:</h4>
-              <p>{expense.location}</p>
-            </div>
-            <div className="row">
-              <h4>Time:</h4>
-              <p>{expense.time}</p>
+              <p>
+                {expense.location ? expense.location : "No location available"}
+              </p>
             </div>
             <div className="row">
               <h4>Date:</h4>
@@ -43,6 +41,14 @@ const OverallExpensesWidget: React.FC<Props> = ({ expenses }) => {
                 {expense.date
                   ? new Date(expense.date).toLocaleDateString()
                   : "No date available"}
+              </p>
+            </div>
+            <div className="row">
+              <h4>Time:</h4>
+              <p>
+                {expense.date
+                  ? new Date(expense.date).toLocaleTimeString()
+                  : "No time available"}
               </p>
             </div>
             <hr />
