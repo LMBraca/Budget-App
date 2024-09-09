@@ -32,18 +32,18 @@ function App() {
     ],
     sm: [
       { i: "widget1", x: 0, y: 0, w: 2, h: 2 },
-      { i: "widget2", x: 0, y: 2, w: 2, h: 2 },
+      { i: "widget2", x: 0, y: 2, w: 4, h: 2 },
       { i: "widget3", x: 0, y: 4, w: 4, h: 3 },
     ],
     xs: [
-      { i: "widget1", x: 0, y: 0, w: 1, h: 2 },
-      { i: "widget2", x: 0, y: 2, w: 1, h: 2 },
-      { i: "widget3", x: 0, y: 4, w: 2, h: 3 },
+      { i: "widget1", x: 0, y: 0, w: 2, h: 4 },
+      { i: "widget2", x: 0, y: 2, w: 4, h: 4 },
+      { i: "widget3", x: 0, y: 4, w: 6, h: 8 },
     ],
   };
 
   const breakpoints = { lg: 1200, md: 996, sm: 768, xs: 480 };
-  const cols = { lg: 10, md: 8, sm: 6, xs: 4 };
+  const cols = { lg: 10, md: 8, sm: 6, xs: 6 };
 
   return (
     <div>
