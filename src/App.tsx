@@ -27,19 +27,18 @@ function App() {
     ],
     md: [
       { i: "widget1", x: 0, y: 0, w: 2, h: 4 },
-      { i: "widget2", x: 2, y: 0, w: 3, h: 4 },
-      { i: "widget3", x: 0, y: 5, w: 10, h: 7 },
+      { i: "widget2", x: 2, y: 4, w: 3, h: 4 },
+      { i: "widget3", x: 0, y: 8, w: 10, h: 7 },
     ],
     sm: [
-      { i: "widget1", x: 0, y: 0, w: 6, h: 4 }, // Takes full width
-      { i: "widget2", x: 0, y: 4, w: 6, h: 6 }, // Stacked below widget1, takes full width
-      { i: "widget3", x: 0, y: 8, w: 6, h: 6 }, // Stacked below widget2, takes full width
+      { i: "widget1", x: 0, y: 0, w: 6, h: 4 }, // First widget, 4 rows high
+      { i: "widget2", x: 0, y: 4, w: 6, h: 6 }, // Second widget starts at y=4, 6 rows high
+      { i: "widget3", x: 0, y: 10, w: 6, h: 6 }, // Third widget starts at y=10, 6 rows high
     ],
-
     xs: [
-      { i: "widget1", x: 0, y: 0, w: 6, h: 4 }, // Takes full width
-      { i: "widget2", x: 0, y: 4, w: 6, h: 6 }, // Stacked below widget1, takes full width
-      { i: "widget3", x: 0, y: 8, w: 6, h: 6 }, // Stacked below widget2, takes full width
+      { i: "widget1", x: 0, y: 0, w: 6, h: 4 }, // First widget, 4 rows high
+      { i: "widget2", x: 0, y: 4, w: 6, h: 6 }, // Second widget starts at y=4, 6 rows high
+      { i: "widget3", x: 0, y: 10, w: 6, h: 6 }, // Third widget starts at y=10, 6 rows high
     ],
   };
 
@@ -58,7 +57,7 @@ function App() {
           preventCollision={true}
           isDraggable={false}
           isResizable={false}
-          rowHeight={80} // Adjust row height as needed
+          rowHeight={60} // Adjust row height as needed
         >
           <div key="widget1" className="widget">
             <OverallExpensesWidget expenses={expenses} />

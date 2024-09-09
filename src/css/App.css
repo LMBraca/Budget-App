@@ -124,8 +124,9 @@ body, .widget-container {
   }
 
   .widget {
-    width: 100%;
-    max-width: 100%;
+    margin-bottom: 20px; /* Create more space between widgets */
+    max-height: 300px; /* Cap the height */
+    overflow-y: auto;
   }
 
   .row, .week-navigation {
