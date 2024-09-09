@@ -16,7 +16,7 @@ h1 {
 main {
   background-color: white;
   max-width: 1200px;
-  min-width: 700px;
+  min-width: 1000px;
   margin: 20px auto;
   border: 1px solid lightgray;
   border-radius: 0.5rem;

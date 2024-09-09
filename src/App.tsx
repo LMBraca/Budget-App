@@ -21,14 +21,14 @@ function App() {
 
   const layouts = {
     lg: [
-      { i: "widget1", x: 0, y: 0, w: 2, h: 3 },
-      { i: "widget2", x: 2, y: 0, w: 3, h: 3 },
-      { i: "widget3", x: 0, y: 3, w: 6, h: 5 },
+      { i: "widget1", x: 0, y: 0, w: 2, h: 4 },
+      { i: "widget2", x: 2, y: 0, w: 3, h: 4 },
+      { i: "widget3", x: 0, y: 3, w: 6, h: 8 },
     ],
     md: [
-      { i: "widget1", x: 0, y: 0, w: 3, h: 2 },
-      { i: "widget2", x: 0, y: 2, w: 3, h: 2 },
-      { i: "widget3", x: 0, y: 4, w: 6, h: 3 },
+      { i: "widget1", x: 0, y: 0, w: 2, h: 4 },
+      { i: "widget2", x: 2, y: 0, w: 3, h: 4 },
+      { i: "widget3", x: 0, y: 5, w: 10, h: 7 },
     ],
     sm: [
       { i: "widget1", x: 0, y: 0, w: 2, h: 2 },
@@ -43,7 +43,7 @@ function App() {
   };
 
   const breakpoints = { lg: 1200, md: 996, sm: 768, xs: 480 };
-  const cols = { lg: 6, md: 6, sm: 4, xs: 2 };
+  const cols = { lg: 10, md: 8, sm: 6, xs: 4 };
 
   return (
     <div>
