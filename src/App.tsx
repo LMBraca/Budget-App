@@ -22,10 +22,6 @@ function App() {
     { i: "widget3", x: 0, y: 3, w: 6, h: 5 },
   ];
 
-  const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-  };
-
   return (
     <div>
       <h1>Protopene</h1>
@@ -36,17 +32,17 @@ function App() {
           cols={6}
           maxRows={16}
           width={1200}
-          preventCollision={false}
+          preventCollision={true}
+          isDraggable={false}
           isResizable={false}
-          draggableCancel=".no-drag"
         >
-          <div key="widget1" className="widget" onDragStart={handleDragStart}>
+          <div key="widget1" className="widget">
             <OverallExpensesWidget expenses={expenses} />
           </div>
-          <div key="widget2" className="widget" onDragStart={handleDragStart}>
+          <div key="widget2" className="widget">
             <WeeklyExpensesWidget expenses={expenses} />
           </div>
-          <div key="widget3" className="widget" onDragStart={handleDragStart}>
+          <div key="widget3" className="widget">
             <LineChartExpensesWidget expenses={expenses} />
           </div>
         </GridLayout>
