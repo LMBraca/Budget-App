@@ -31,14 +31,15 @@ function App() {
       { i: "widget3", x: 0, y: 5, w: 10, h: 7 },
     ],
     sm: [
-      { i: "widget1", x: 0, y: 0, w: 2, h: 2 },
-      { i: "widget2", x: 0, y: 2, w: 4, h: 2 },
-      { i: "widget3", x: 0, y: 4, w: 4, h: 3 },
+      { i: "widget1", x: 0, y: 0, w: 6, h: 4 }, // Takes full width
+      { i: "widget2", x: 0, y: 4, w: 6, h: 6 }, // Stacked below widget1, takes full width
+      { i: "widget3", x: 0, y: 8, w: 6, h: 6 }, // Stacked below widget2, takes full width
     ],
+
     xs: [
-      { i: "widget1", x: 0, y: 0, w: 2, h: 4 },
-      { i: "widget2", x: 0, y: 2, w: 4, h: 4 },
-      { i: "widget3", x: 0, y: 4, w: 6, h: 8 },
+      { i: "widget1", x: 0, y: 0, w: 6, h: 4 }, // Takes full width
+      { i: "widget2", x: 0, y: 4, w: 6, h: 6 }, // Stacked below widget1, takes full width
+      { i: "widget3", x: 0, y: 8, w: 6, h: 6 }, // Stacked below widget2, takes full width
     ],
   };
 
@@ -57,7 +58,7 @@ function App() {
           preventCollision={true}
           isDraggable={false}
           isResizable={false}
-          rowHeight={100} // Adjust row height as needed
+          rowHeight={80} // Adjust row height as needed
         >
           <div key="widget1" className="widget">
             <OverallExpensesWidget expenses={expenses} />

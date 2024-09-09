@@ -64,14 +64,4 @@
   padding: 10px; /* Add some padding to the header */
 }
 
-@media (max-width: 768px) {
-  .nav-button {
-    width: 100%;
-    margin-bottom: 10px;
-  }
 
-  .widget-header {
-    padding: 5px;
-    font-size: 0.8rem;
-  }
-}
