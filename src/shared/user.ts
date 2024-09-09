@@ -3,7 +3,7 @@ import { Entity, Fields } from "remult";
 @Entity("user", {
     allowApiCrud: true,
 })
-export class Expense {
+export class User {
     @Fields.autoIncrement()
     idUser = 0; // This corresponds to the "IdExpense" column in the database
 
