@@ -31,7 +31,7 @@ const SignInPage: React.FC = () => {
       <h2>Sign In</h2>
       <form onSubmit={handleSignIn}>
         <div className="form-group">
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username">Usernaame:</label>
           <input
             type="text"
             id="username"
