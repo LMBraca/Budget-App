@@ -67,13 +67,13 @@ p {
 .row {
   display: flex;
   padding: 8px;
-  align-items: center;
   gap: 0.5rem;
+  justify-content: space-between; /* Horizontal alignment on desktop */
 }
 
 .widget {
-  width: 100%; /* Make sure widget uses full width */
-  max-width: 100%; /* Ensure max width is full */
+  width: 90%; /* Make sure widget uses full width */
+  max-width: 100%;
   overflow-y: auto;
   background-color: #f9f9f9;
   border: 1px solid lightgray;
@@ -81,42 +81,44 @@ p {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Scrollbar styling */
 .widget::-webkit-scrollbar {
-  width: 4px; /* Narrower scrollbar width */
+  width: 4px;
 }
 
 .widget::-webkit-scrollbar-track {
-  background: #f5f5f5; /* Light, neutral background for the track */
+  background: #f5f5f5;
 }
 
 .widget::-webkit-scrollbar-thumb {
-  background-color: #c0c0c0; /* Subtle color for the thumb */
-  border-radius: 10px; /* Rounded edges for a softer appearance */
+  background-color: #c0c0c0;
+  border-radius: 10px;
 }
 
 .widget::-webkit-scrollbar-thumb:hover {
-  background-color: #a0a0a0; /* Slightly darker when hovering */
+  background-color: #a0a0a0;
 }
 
-/* Firefox scrollbar style */
+/* Firefox scrollbar */
 .widget {
-  scrollbar-width: thin; /* Thinner scrollbar in Firefox */
-  scrollbar-color: #c0c0c0 #f5f5f5; /* Thumb and track colors */
+  scrollbar-width: thin;
+  scrollbar-color: #c0c0c0 #f5f5f5;
 }
 
-/* Prevent text selection with cross-browser compatibility */
+/* Prevent text selection */
 body, .widget-container {
-  -webkit-user-select: none; /* Safari and older iOS versions */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Standard property */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* Mobile Styles */
 @media (max-width: 768px) {
   main {
-    max-width: 100%;
+    max-width: 90%;
     min-width: 100%;
+    padding: 10px 15px;
   }
 
   .widget-container {
@@ -124,14 +126,15 @@ body, .widget-container {
   }
 
   .widget {
-    margin-bottom: 20px; /* Create more space between widgets */
-    max-height: 300px; /* Cap the height */
+    margin-bottom: 30px;
+    max-height: 300px;
     overflow-y: auto;
   }
 
   .row, .week-navigation {
     flex-direction: column;
     align-items: flex-start;
+    text-align: left;
   }
 
   .nav-button {
@@ -147,5 +150,9 @@ body, .widget-container {
   .widget {
     max-height: 50vh;
     overflow-y: scroll;
+  }
+
+  .widget, .widget h2, .widget h3, .widget h4, .widget p {
+    text-align: left;
   }
 }

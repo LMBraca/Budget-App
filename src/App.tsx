@@ -21,24 +21,24 @@ function App() {
 
   const layouts = {
     lg: [
-      { i: "widget1", x: 0, y: 0, w: 2, h: 4 },
-      { i: "widget2", x: 2, y: 0, w: 3, h: 4 },
-      { i: "widget3", x: 0, y: 3, w: 6, h: 8 },
+      { i: "widget1", x: 0, y: 0, w: 3, h: 7 }, // Widget1 starts at y=0
+      { i: "widget2", x: 3, y: 0, w: 4, h: 7 }, // Widget2 starts at y=0 (same row as widget1)
+      { i: "widget3", x: 0, y: 7, w: 6, h: 9 }, // Widget3 starts at y=7 (below widget1 and widget2)
     ],
     md: [
-      { i: "widget1", x: 0, y: 0, w: 2, h: 4 },
-      { i: "widget2", x: 2, y: 4, w: 3, h: 4 },
-      { i: "widget3", x: 0, y: 8, w: 10, h: 7 },
+      { i: "widget1", x: 0, y: 0, w: 3, h: 7 }, // Widget1 starts at y=0
+      { i: "widget2", x: 3, y: 0, w: 4, h: 7 }, // Widget2 starts at y=0
+      { i: "widget3", x: 0, y: 7, w: 10, h: 9 }, // Widget3 starts at y=7 (below widget1 and widget2)
     ],
     sm: [
-      { i: "widget1", x: 0, y: 0, w: 6, h: 4 }, // First widget, 4 rows high
-      { i: "widget2", x: 0, y: 4, w: 6, h: 6 }, // Second widget starts at y=4, 6 rows high
-      { i: "widget3", x: 0, y: 10, w: 6, h: 6 }, // Third widget starts at y=10, 6 rows high
+      { i: "widget1", x: 0, y: 0, w: 6, h: 6 }, // Widget1 starts at y=0, height=6
+      { i: "widget2", x: 0, y: 6, w: 6, h: 7 }, // Widget2 starts at y=6 (right after widget1), height=7
+      { i: "widget3", x: 0, y: 13, w: 6, h: 9 }, // Widget3 starts at y=13 (6 + 7 = 13), height=9
     ],
     xs: [
-      { i: "widget1", x: 0, y: 0, w: 6, h: 4 }, // First widget, 4 rows high
-      { i: "widget2", x: 0, y: 4, w: 6, h: 6 }, // Second widget starts at y=4, 6 rows high
-      { i: "widget3", x: 0, y: 10, w: 6, h: 6 }, // Third widget starts at y=10, 6 rows high
+      { i: "widget1", x: 0, y: 0, w: 6, h: 6 }, // Widget1 starts at y=0, height=6
+      { i: "widget2", x: 0, y: 6, w: 6, h: 7 }, // Widget2 starts at y=6 (right after widget1), height=7
+      { i: "widget3", x: 0, y: 13, w: 6, h: 9 }, // Widget3 starts at y=13 (6 + 7 = 13), height=9
     ],
   };
 
