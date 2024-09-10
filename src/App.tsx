@@ -22,23 +22,23 @@ function App() {
   const layouts = {
     lg: [
       { i: "widget1", x: 0, y: 0, w: 3, h: 7 }, // Widget1 starts at y=0
-      { i: "widget2", x: 3, y: 0, w: 4, h: 7 }, // Widget2 starts at y=0 (same row as widget1)
-      { i: "widget3", x: 0, y: 7, w: 6, h: 9 }, // Widget3 starts at y=7 (below widget1 and widget2)
+      { i: "widget2", x: 3, y: 0, w: 4, h: 10 }, // Increase height of Widget2 to h=10
+      { i: "widget3", x: 0, y: 10, w: 6, h: 9 }, // Adjust Widget3 to start after Widget2 at y=10
     ],
     md: [
       { i: "widget1", x: 0, y: 0, w: 3, h: 7 }, // Widget1 starts at y=0
-      { i: "widget2", x: 3, y: 0, w: 4, h: 7 }, // Widget2 starts at y=0
-      { i: "widget3", x: 0, y: 7, w: 10, h: 9 }, // Widget3 starts at y=7 (below widget1 and widget2)
+      { i: "widget2", x: 3, y: 0, w: 4, h: 10 }, // Increase height of Widget2 to h=10
+      { i: "widget3", x: 0, y: 10, w: 10, h: 9 }, // Adjust Widget3 to start after Widget2 at y=10
     ],
     sm: [
       { i: "widget1", x: 0, y: 0, w: 6, h: 6 }, // Widget1 starts at y=0, height=6
-      { i: "widget2", x: 0, y: 6, w: 6, h: 7 }, // Widget2 starts at y=6 (right after widget1), height=7
-      { i: "widget3", x: 0, y: 13, w: 6, h: 9 }, // Widget3 starts at y=13 (6 + 7 = 13), height=9
+      { i: "widget2", x: 0, y: 6, w: 6, h: 10 }, // Increase height of Widget2 to h=10
+      { i: "widget3", x: 0, y: 16, w: 6, h: 9 }, // Adjust Widget3 to start after Widget2 at y=16
     ],
     xs: [
       { i: "widget1", x: 0, y: 0, w: 6, h: 6 }, // Widget1 starts at y=0, height=6
-      { i: "widget2", x: 0, y: 6, w: 6, h: 7 }, // Widget2 starts at y=6 (right after widget1), height=7
-      { i: "widget3", x: 0, y: 13, w: 6, h: 9 }, // Widget3 starts at y=13 (6 + 7 = 13), height=9
+      { i: "widget2", x: 0, y: 6, w: 6, h: 10 }, // Increase height of Widget2 to h=10
+      { i: "widget3", x: 0, y: 16, w: 6, h: 9 }, // Adjust Widget3 to start after Widget2 at y=16
     ],
   };
 
