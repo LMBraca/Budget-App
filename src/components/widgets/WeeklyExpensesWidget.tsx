@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Expense } from "../../shared/expense";
 import "../../css/ExpensesWidget.css"; // Import the CSS file
 import "../../css/ColorGrading.css"; // Import the CSS file
+import arrowSvg from "../../../public/arrow.svg"; // Adjust path as needed
 
 interface Props {
   expenses: Expense[];
@@ -61,26 +62,26 @@ const WeeklyExpensesWidget: React.FC<Props> = ({ expenses }) => {
         <br />
         <div className="week-navigation">
           <button
-            className="nav-button no-drag"
+            className="nav-arrow"
             onClick={(e) => {
               e.stopPropagation();
               handlePreviousWeek();
             }}
           >
-            Previous Week
+            <img src={arrowSvg} alt="Previous Week" className="arrow-left" />
           </button>
           <span className="week-range">
             {startOfWeek.toLocaleDateString()} -{" "}
             {endOfWeek.toLocaleDateString()}
           </span>
           <button
-            className="nav-button no-drag"
+            className="nav-arrow"
             onClick={(e) => {
               e.stopPropagation();
               handleNextWeek();
             }}
           >
-            Next Week
+            <img src={arrowSvg} alt="Next Week" className="arrow-right" />
           </button>
         </div>
         <hr />

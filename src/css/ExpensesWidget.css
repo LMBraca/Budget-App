@@ -1,20 +1,24 @@
+/* General styles for widgets */
 .weekly-expenses-widget {
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .week-navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
+
 .week-range {
   font-weight: bold;
   color: #333;
   text-wrap: nowrap;
   padding: 10px 15px;
 }
+
 .nav-button {
   background-color: grey;
   font-size: 16px;
@@ -22,35 +26,125 @@
   border: none;
   border-radius: 4px;
   padding: 10px 15px;
-  margin: 0 5px; /* 10px left-right margin to create space between buttons */
+  margin: 0 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 .nav-button:hover {
   background-color: black;
 }
+
 .expense-item {
   margin-bottom: 15px;
 }
+
+/* Row class for alignment */
 .row {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Push label to the left and value to the right */
   align-items: center;
+  flex-direction: row; /* Keep horizontal layout */
+  text-align: left;
+  width: 90%;
 }
+
+.row h4, .row p {
+  margin: 0;
+}
+
 .row h4 {
-  margin: 0;
-  font-weight: normal;
-  color: #555;
+  flex: 1; /* Label on the left */
 }
+
 .row p {
-  margin: 0;
-  font-weight: bold;
-  color: #000;
+  flex: 1; /* Value on the right */
+  text-align: right; /* Align value to the right */
 }
+
 .widget-header {
   position: sticky;
   background-color: #f9f9f9;
-  top: 0; /* Stick to the top of the widget */
-  z-index: 10; /* Ensure the header stays above other content */
-  padding: 10px; /* Add some padding to the header */
+  top: 0;
+  z-index: 10;
+  padding: 10px;
+}
+
+/* Styling for navigation arrows */
+/* Styling for navigation arrows */
+.nav-arrow {
+  background-color: transparent; /* No background color */
+  border: none; /* Remove default border */
+  cursor: pointer; /* Pointer cursor on hover */
+  padding: 5px; /* Adjust padding for better spacing */
+  margin: 0 10px; /* Horizontal margin between arrows */
+  display: flex; /* Flexbox for centering the arrow image */
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.nav-arrow img {
+  width: 20px; /* Adjust the size of the SVG arrow */
+  height: 20px;
+}
+
+.nav-arrow:hover {
+  background-color: transparent !important; /* Light transparent background on hover */
+  transform: scale(1.1); /* Slight scale-up effect */
+}
+
+.arrow-left {
+  transform: rotate(180deg); /* Rotate left arrow */
+}
+
+.arrow-right {
+  transform: rotate(0deg); /* Keep right arrow default */
+}
+
+/* Ensure transparent background is maintained */
+.nav-arrow:focus, .nav-arrow:active {
+  background-color: transparent !important;/* Ensure no color when focused/active */
+}
+
+
+/* Responsive styles for mobile */
+@media (max-width: 768px) {
+  .weekly-expenses-widget {
+    margin-bottom: 20px;
+  }
+
+  .row {
+    flex-direction: row; /* Keep label and value on the same line */
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .widget-header {
+    padding: 5px;
+    font-size: 0.8rem;
+  }
+
+  .widget {
+    overflow-y: scroll;
+  }
+
+  .widget, .widget h2, .widget h3, .widget h4, .widget p {
+    text-align: left;
+  }
+
+  .nav-arrow {
+    margin: 0 5px; /* Adjust margin for smaller screens */
+    padding: 3px; /* Adjust padding for better touch size */
+  }
+
+  .nav-arrow img {
+    width: 16px; /* Slightly smaller arrows on mobile */
+    height: 16px;
+  }
 }

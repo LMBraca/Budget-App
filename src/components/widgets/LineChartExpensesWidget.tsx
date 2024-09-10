@@ -44,7 +44,7 @@ const LineChartExpensesWidget: React.FC<Props> = ({ expenses }) => {
   const startDate = new Date(sortedExpenses[0]?.date);
   const endDate = new Date(sortedExpenses[sortedExpenses.length - 1]?.date);
 
-  // Generate all dates in the range
+  // Generate all dates in the range for "day" view
   const allDates =
     xAxisType === "day"
       ? eachDayOfInterval({ start: startDate, end: endDate }).map((date) =>
@@ -83,12 +83,16 @@ const LineChartExpensesWidget: React.FC<Props> = ({ expenses }) => {
     });
   }
 
+  // For "week" and "month" views, use the groupedExpenses keys as labels
+  const labels = xAxisType === "day" ? allDates : Object.keys(groupedExpenses);
+
+  // Map the expenses for the chart
   const data = {
-    labels: Object.keys(groupedExpenses), // Include all dates
+    labels: labels,
     datasets: [
       {
         label: "Expenses Over Time",
-        data: Object.values(groupedExpenses),
+        data: labels.map((label) => groupedExpenses[label] || 0),
         fill: false,
         borderColor: "rgba(75,192,192,1)",
         tension: 0.1,
