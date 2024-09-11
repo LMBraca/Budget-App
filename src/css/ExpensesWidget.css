@@ -107,6 +107,37 @@
   background-color: transparent !important;/* Ensure no color when focused/active */
 }
 
+/* Flex container for the title and button */
+.expense-header {
+  display: flex;
+  justify-content: space-between; /* Title to the left, button to the right */
+  align-items: center; /* Vertically align the button with the title */
+  margin-bottom: 10px;
+}
+
+.expense-header h3 {
+  margin: 0; /* Remove any unwanted margin from the title */
+  flex-grow: 1; /* Allow the title to take up the remaining space */
+}
+
+.expense-header button {
+  max-width: 80px; /* Fixed width for the button */
+  margin-right: 10px;
+  padding: 10px;
+  background-color: #007bff; /* Button background color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.expense-header button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Elevate the button */
+}
+
 
 /* Responsive styles for mobile */
 @media (max-width: 768px) {

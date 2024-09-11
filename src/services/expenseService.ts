@@ -127,3 +127,104 @@ export const insertExpense = async (expense: Expense) => {
   }
 };
 
+export const updateExpense = async (expense: Expense) => {
+  try {
+    console.log("Sending update request to Supabase for expense:", expense); // Log the outgoing request
+
+    const { data, error } = await supabase
+      .from('Expenses')
+      .update({
+        Description: expense.description,
+        Expense: expense.expense,
+        Location: expense.location,
+        Date: expense.date, // Ensure this is in the right format
+      })
+      .eq('IdExpense', expense.id); // Make sure you're updating the correct expense based on its ID
+
+    if (error) {
+      console.error('Error updating expense:', error.message, error.details, error.hint); // Log any errors from Supabase
+      return { success: false, error };
+    }
+
+    console.log('Expense updated successfully:', data); // Log the success response
+    return { success: true, data };
+
+  } catch (err) {
+    console.error('Unexpected error during expense update:', err); // Log any unexpected errors
+    return { success: false, error: err };
+  }
+};
+
+export const updateWeeklyIncomeAndPayday = async (newIncome: number, payday: number): Promise<void> => {
+  const userId = localStorage.getItem('userId');
+  if (!userId) {
+    console.error('No userId found. User might not be signed in.');
+    return;
+  }
+
+  try {
+    const { error } = await supabase
+      .from('Users')
+      .update({ WeeklyIncome: newIncome, Payday: payday })
+      .eq('IdUser', parseInt(userId));
+
+    if (error) {
+      console.error('Error updating WeeklyIncome and Payday in Supabase:', error);
+    }
+  } catch (error) {
+    console.error('Unexpected error updating WeeklyIncome and Payday:', error);
+  }
+};
+
+export const fetchWeeklyIncome = async (): Promise<number | null> => {
+  const userId = localStorage.getItem('userId');
+  if (!userId) {
+    console.error('No userId found. User might not be signed in.');
+    return null;
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from('Users')
+      .select('WeeklyIncome')
+      .eq('IdUser', parseInt(userId))
+      .single();
+
+    if (error) {
+      console.error('Error fetching WeeklyIncome:', error);
+      return null;
+    }
+
+    return data?.WeeklyIncome || 0;
+  } catch (error) {
+    console.error('Unexpected error fetching WeeklyIncome:', error);
+    return null;
+  }
+};
+
+// Fetch payday
+export const fetchPayday = async (): Promise<number | null> => {
+  const userId = localStorage.getItem('userId');
+  if (!userId) {
+    console.error('No userId found. User might not be signed in.');
+    return null;
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from('Users')
+      .select('Payday')
+      .eq('IdUser', parseInt(userId))
+      .single();
+
+    if (error) {
+      console.error('Error fetching Payday:', error);
+      return null;
+    }
+
+    return data?.Payday || 4; // Default to Thursday (4)
+  } catch (error) {
+    console.error('Unexpected error fetching Payday:', error);
+    return null;
+  }
+};

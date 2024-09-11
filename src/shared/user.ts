@@ -13,5 +13,6 @@ export class User {
     @Fields.string()
     password = ""; // This corresponds to the "Description" column in the database
 
-    
+    @Fields.number()
+    weeklyIncome = "";
 }

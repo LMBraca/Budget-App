@@ -21,6 +21,29 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Elevate the button */
 }
 
+
+/* Set Weekly Income button - position it higher than the Add Expense button */
+.set-weekly-income-widget {
+  position: fixed;
+  bottom: 80px; /* Higher than the Add Expense button */
+  right: 20px;
+  background-color: #28a745; /* Green color for differentiation */
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000; /* Ensure button is on top */
+}
+
+.set-weekly-income-widget:hover {
+  background-color: #218838;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
 /* Overlay to darken the background */
 .overlay {
   position: fixed;
@@ -113,6 +136,37 @@ button.cancel {
 button.cancel:hover {
   background-color: #5a6268;
 }
+
+.form-group {
+  margin-bottom: 20px; /* Space between form groups */
+  display: flex;
+  flex-direction: column; /* Ensure label and input are stacked */
+  align-items: flex-start; /* Align label to the left */
+}
+
+label {
+  font-weight: bold; /* Bold label for emphasis */
+  color: #333; /* Darker text for better contrast */
+  margin-bottom: 8px; /* Space between label and input */
+}
+
+input,
+select {
+  width: 100%; /* Full width for input/select fields */
+  padding: 10px; /* Padding inside the input field */
+  font-size: 16px; /* Larger font for better readability */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  transition: border-color 0.3s ease; /* Smooth transition on focus */
+}
+
+input:focus,
+select:focus {
+  border-color: #007bff; /* Border color when focused */
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2); /* Soft shadow on focus */
+}
+
 
 /* Form slide-in animation */
 @keyframes slideIn {
