@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import { Expense } from "../../shared/expense";
 import "../../css/ExpensesWidget.css"; // Import the CSS file
-import "../../css/ColorGrading.css"; // Import the CSS file
+import "../../css/ColorGrading.css"; // Import the shared CSS file
 import arrowSvg from "/arrow.svg"; // Adjust path as needed
 
 interface Props {
   expenses: Expense[];
   weeklyIncome: number; // Use dynamic weekly income
   payday: number; // Payday (0 = Sunday, 1 = Monday, etc.)
+  onDropdownToggle: (isOpen: boolean) => void; // Prop to handle dropdown toggle
 }
 
 const WeeklyExpensesWidget: React.FC<Props> = ({
   expenses,
   weeklyIncome,
   payday,
+  onDropdownToggle,
 }) => {
   const [weekOffset, setWeekOffset] = useState(0);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(true); // State to handle dropdown visibility
 
   // Function to calculate the start of the week based on the payday
   const getStartOfWeekBasedOnPayday = (offset: number) => {
@@ -66,11 +69,19 @@ const WeeklyExpensesWidget: React.FC<Props> = ({
     setWeekOffset(weekOffset + 1);
   };
 
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => {
+      onDropdownToggle(!prev); // Notify parent of the dropdown toggle state
+      return !prev;
+    });
+  };
+
   return (
     <div className="weekly-expenses-widget">
-      <div className="widget-header">
+      <div className="widget-header dropdown-header" onClick={toggleDropdown}>
         <h2>Weekly Expenses</h2>
-        <br />
+        <hr />
+
         <div className="week-navigation">
           <button
             className="nav-arrow"
@@ -96,56 +107,60 @@ const WeeklyExpensesWidget: React.FC<Props> = ({
           </button>
         </div>
         <hr />
-        <div className="row">
-          <h4>Weekly Total:</h4>
-          <div className={getTotalClass(weeklyTotal)}>
-            <h4>${weeklyTotal.toFixed(2)}</h4>
-          </div>
-        </div>
-        <div className="row">
-          <h4>Gross Weekly Income:</h4>
-          <div className="gross-weekly-income">
-            <h4>${grossWeeklyIncome.toFixed(2)}</h4>
-          </div>
-        </div>
-        <hr />
       </div>
 
-      {weeklyExpenses.length > 0 ? (
+      <div className="row">
+        <h4>Weekly Total:</h4>
+        <div className={getTotalClass(weeklyTotal)}>
+          <h4>${weeklyTotal.toFixed(2)}</h4>
+        </div>
+      </div>
+      <div className="row">
+        <h4>Gross Weekly Income:</h4>
+        <div className="gross-weekly-income">
+          <h4>${grossWeeklyIncome.toFixed(2)}</h4>
+        </div>
+      </div>
+      <hr />
+      {isDropdownOpen && (
         <>
-          {weeklyExpenses.map((expense) => (
-            <div key={expense.id} className="expense-item">
-              <h3>{expense.description}</h3>
-              <div className="row">
-                <h4>Amount:</h4>
-                <p>${expense.expense}</p>
-              </div>
-              <div className="row">
-                <h4>Location:</h4>
-                <p>
-                  {expense.location
-                    ? expense.location
-                    : "No location available"}
-                </p>
-              </div>
-              <div className="row">
-                <h4>Date:</h4>
-                <p>{new Date(expense.date).toLocaleDateString()}</p>
-              </div>
-              <div className="row">
-                <h4>Time:</h4>
-                <p>
-                  {expense.date
-                    ? new Date(expense.date).toLocaleTimeString()
-                    : "No time available"}
-                </p>
-              </div>
-              <hr />
-            </div>
-          ))}
+          {weeklyExpenses.length > 0 ? (
+            <>
+              {weeklyExpenses.map((expense) => (
+                <div key={expense.id} className="expense-item">
+                  <h3>{expense.description}</h3>
+                  <div className="row">
+                    <h4>Amount:</h4>
+                    <p>${expense.expense}</p>
+                  </div>
+                  <div className="row">
+                    <h4>Location:</h4>
+                    <p>
+                      {expense.location
+                        ? expense.location
+                        : "No location available"}
+                    </p>
+                  </div>
+                  <div className="row">
+                    <h4>Date:</h4>
+                    <p>{new Date(expense.date).toLocaleDateString()}</p>
+                  </div>
+                  <div className="row">
+                    <h4>Time:</h4>
+                    <p>
+                      {expense.date
+                        ? new Date(expense.date).toLocaleTimeString()
+                        : "No time available"}
+                    </p>
+                  </div>
+                  <hr />
+                </div>
+              ))}
+            </>
+          ) : (
+            <p>No expenses for this week.</p>
+          )}
         </>
-      ) : (
-        <p>No expenses for this week.</p>
       )}
     </div>
   );
