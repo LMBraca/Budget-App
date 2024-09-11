@@ -138,6 +138,32 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Elevate the button */
 }
 
+.widget-header {
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown-header {
+  align-items: center;
+  cursor: pointer;
+}
+
+
+.dropdown-content {
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  margin-top: 10px;
+}
+
+.expense-item {
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+
+
 
 /* Responsive styles for mobile */
 @media (max-width: 768px) {

@@ -1,81 +1,110 @@
 import React, { useState } from "react";
 import { Expense } from "../../shared/expense";
-import "../../css/ExpensesWidget.css"; // Keep this CSS import
-import { updateExpense } from "../../services/expenseService"; // Import the update function
-import EditExpenseForm from "../EditExpenseForm"; // Import the new EditExpenseForm component
+import "../../css/ExpensesWidget.css";
+import { updateExpense } from "../../services/expenseService";
+import EditExpenseForm from "../EditExpenseForm";
 
 interface Props {
   expenses: Expense[];
+  onDropdownToggle: (isOpen: boolean) => void; // Prop to handle dropdown toggle event
 }
 
-const OverallExpensesWidget: React.FC<Props> = ({ expenses }) => {
+const OverallExpensesWidget: React.FC<Props> = ({
+  expenses,
+  onDropdownToggle,
+}) => {
   const [editingExpense, setEditingExpense] = useState<Expense | null>(null);
+  const [expensesState, setExpenses] = useState<Expense[]>(expenses); // Track state internally
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Dropdown state
 
-  const sortedExpenses = [...expenses].sort(
+  const sortedExpenses = [...expensesState].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
   const handleEditClick = (expense: Expense) => {
-    console.log("Editing expense:", expense); // Debugging step
-    setEditingExpense(expense); // Set the expense to be edited
+    console.log("Editing expense:", expense);
+    setEditingExpense(expense);
   };
 
   const handleUpdateSubmit = async (updatedExpense: Expense) => {
-    console.log("Updating expense:", updatedExpense); // Debugging step
-    await updateExpense(updatedExpense); // Call the API to update the expense
-    setEditingExpense(null); // Reset the editing state after submission
-    window.location.reload();
+    console.log("Updating expense:", updatedExpense);
+    await updateExpense(updatedExpense); // Update API call
+    setEditingExpense(null);
+
+    // Update the state to reflect changes
+    setExpenses((prevExpenses) =>
+      prevExpenses.map((expense) =>
+        expense.id === updatedExpense.id ? updatedExpense : expense
+      )
+    );
   };
 
   const handleCancelEdit = () => {
-    console.log("Canceling edit"); // Debugging step
-    setEditingExpense(null); // Reset the editing state when the user cancels
+    console.log("Canceling edit");
+    setEditingExpense(null);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => {
+      onDropdownToggle(!prev); // Notify parent of the dropdown toggle state
+      return !prev;
+    });
   };
 
   return (
-    <div className="weekly-expenses-widget">
-      <div className="widget-header">
-        <h2>All Expenses</h2>
+    <div className="overall-expenses-widget">
+      <div className="widget-header" onClick={toggleDropdown}>
+        <h2 className="dropdown-header">All Expenses</h2>
         <hr />
       </div>
-      {sortedExpenses.length > 0 ? (
-        sortedExpenses.map((expense) => (
-          <div key={expense.id} className="expense-item">
-            {/* Flex container for title and button */}
-            <div className="expense-header">
-              <h3>{expense.description}</h3>
-              <button onClick={() => handleEditClick(expense)}>Edit</button>
-            </div>
 
-            <div className="row">
-              <h4>Amount:</h4>
-              <p>${expense.expense}</p>
-            </div>
-            <div className="row">
-              <h4>Location:</h4>
-              <p>{expense.location || "No location available"}</p>
-            </div>
-            <div className="row">
-              <h4>Date:</h4>
-              <p>{new Date(expense.date).toLocaleDateString()}</p>
-            </div>
-            <div className="row">
-              <h4>Time:</h4>
-              <p>{new Date(expense.date).toLocaleTimeString()}</p>
-            </div>
-            <hr />
-          </div>
-        ))
-      ) : (
-        <p>No expenses available.</p>
-      )}
+      {/* Show or hide content based on dropdown state */}
+      {isDropdownOpen && (
+        <div className="dropdown-content">
+          {sortedExpenses.length > 0 ? (
+            sortedExpenses.map((expense) => (
+              <div
+                key={expense.id}
+                className={`expense-item ${
+                  editingExpense?.id === expense.id ? "editing" : ""
+                }`}
+              >
+                <div className="expense-header">
+                  <h3>{expense.description}</h3>
+                  <button onClick={() => handleEditClick(expense)}>Edit</button>
+                </div>
 
-      {editingExpense && (
-        <EditExpenseForm
-          expense={editingExpense}
-          onSubmit={handleUpdateSubmit}
-          onCancel={handleCancelEdit}
-        />
+                <div className="row">
+                  <h4>Amount:</h4>
+                  <p>${expense.expense}</p>
+                </div>
+                <div className="row">
+                  <h4>Location:</h4>
+                  <p>{expense.location || "No location available"}</p>
+                </div>
+                <div className="row">
+                  <h4>Date:</h4>
+                  <p>{new Date(expense.date).toLocaleDateString()}</p>
+                </div>
+                <div className="row">
+                  <h4>Time:</h4>
+                  <p>{new Date(expense.date).toLocaleTimeString()}</p>
+                </div>
+                <hr />
+              </div>
+            ))
+          ) : (
+            <p>No expenses available.</p>
+          )}
+
+          {editingExpense && (
+            <EditExpenseForm
+              expense={editingExpense}
+              onSubmit={handleUpdateSubmit}
+              onCancel={handleCancelEdit}
+            />
+          )}
+        </div>
       )}
     </div>
   );

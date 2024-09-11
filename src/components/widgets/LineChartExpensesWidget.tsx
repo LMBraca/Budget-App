@@ -30,10 +30,15 @@ Chart.register(
 
 interface Props {
   expenses: Expense[];
+  onDropdownToggle: (isOpen: boolean) => void; // Add prop to handle dropdown state change
 }
 
-const LineChartExpensesWidget: React.FC<Props> = ({ expenses }) => {
+const LineChartExpensesWidget: React.FC<Props> = ({
+  expenses,
+  onDropdownToggle,
+}) => {
   const [xAxisType, setXAxisType] = useState<"day" | "week" | "month">("day");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(true); // State to handle dropdown visibility
 
   // Sort expenses by date before processing
   const sortedExpenses = [...expenses].sort((a, b) => {
@@ -123,39 +128,54 @@ const LineChartExpensesWidget: React.FC<Props> = ({ expenses }) => {
     setXAxisType(type);
   };
 
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => {
+      onDropdownToggle(!prev); // Notify parent of the dropdown toggle state
+      return !prev;
+    });
+  };
+
   return (
     <div className="weekly-expenses-widget">
-      <div className="widget-header">
+      <div className="widget-header" onClick={toggleDropdown}>
         <h2>Expenses Line Chart</h2>
-        <br />
-        <div className="xaxis-buttons row">
-          <button
-            className="nav-button no-drag"
-            onClick={() => handleXAxisTypeChange("day")}
-          >
-            Days
-          </button>
-          <button
-            className="nav-button no-drag"
-            onClick={() => handleXAxisTypeChange("week")}
-          >
-            Weeks
-          </button>
-          <button
-            className="nav-button no-drag"
-            onClick={() => handleXAxisTypeChange("month")}
-          >
-            Months
-          </button>
-        </div>
-        <br />
-        <hr />
       </div>
-      {sortedExpenses.length > 0 ? (
-        <Line data={data} options={options} />
-      ) : (
-        <p>No expenses available to display.</p>
-      )}
+
+      {/* Apply 'closed' class if dropdown is not open */}
+      <div className={`widget-content ${isDropdownOpen ? "" : "closed"}`}>
+        {isDropdownOpen && (
+          <>
+            {/* Content like the buttons and chart go here */}
+            <div className="xaxis-buttons row">
+              <button
+                className="nav-button no-drag"
+                onClick={() => handleXAxisTypeChange("day")}
+              >
+                Days
+              </button>
+              <button
+                className="nav-button no-drag"
+                onClick={() => handleXAxisTypeChange("week")}
+              >
+                Weeks
+              </button>
+              <button
+                className="nav-button no-drag"
+                onClick={() => handleXAxisTypeChange("month")}
+              >
+                Months
+              </button>
+            </div>
+            <br />
+            <hr />
+            {sortedExpenses.length > 0 ? (
+              <Line data={data} options={options} />
+            ) : (
+              <p>No expenses available to display.</p>
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 };
