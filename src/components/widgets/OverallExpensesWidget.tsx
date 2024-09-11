@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Expense } from "../../shared/expense";
 import "../../css/ExpensesWidget.css";
 import { updateExpense } from "../../services/expenseService";
@@ -16,6 +16,16 @@ const OverallExpensesWidget: React.FC<Props> = ({
   const [editingExpense, setEditingExpense] = useState<Expense | null>(null);
   const [expensesState, setExpenses] = useState<Expense[]>(expenses); // Track state internally
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Dropdown state
+
+  // Update the expenses state when the expenses prop changes
+  useEffect(() => {
+    setExpenses(expenses);
+  }, [expenses]); // Trigger when the expenses prop updates
+
+  // Use useEffect to update the parent's state after the render is complete
+  useEffect(() => {
+    onDropdownToggle(isDropdownOpen);
+  }, [isDropdownOpen, onDropdownToggle]);
 
   const sortedExpenses = [...expensesState].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -45,10 +55,7 @@ const OverallExpensesWidget: React.FC<Props> = ({
   };
 
   const toggleDropdown = () => {
-    setIsDropdownOpen((prev) => {
-      onDropdownToggle(!prev); // Notify parent of the dropdown toggle state
-      return !prev;
-    });
+    setIsDropdownOpen((prev) => !prev); // Update dropdown state
   };
 
   return (
