@@ -2,32 +2,41 @@ import React, { useState } from "react";
 import { Expense } from "../../shared/expense";
 import "../../css/ExpensesWidget.css"; // Import the CSS file
 import "../../css/ColorGrading.css"; // Import the CSS file
-import arrowSvg from "../../../public/arrow.svg"; // Adjust path as needed
+import arrowSvg from "/arrow.svg"; // Adjust path as needed
 
 interface Props {
   expenses: Expense[];
+  weeklyIncome: number; // Use dynamic weekly income
+  payday: number; // Payday (0 = Sunday, 1 = Monday, etc.)
 }
 
-const WeeklyExpensesWidget: React.FC<Props> = ({ expenses }) => {
+const WeeklyExpensesWidget: React.FC<Props> = ({
+  expenses,
+  weeklyIncome,
+  payday,
+}) => {
   const [weekOffset, setWeekOffset] = useState(0);
 
-  const getThursdayOfLastWeek = (offset: number) => {
+  // Function to calculate the start of the week based on the payday
+  const getStartOfWeekBasedOnPayday = (offset: number) => {
     const now = new Date();
-    const dayOfWeek = now.getDay(); // Sunday is 0, Saturday is 6
-    const distanceToThursday = (dayOfWeek + 3) % 7; // 0 if Thursday, positive otherwise
-    const thursday = new Date(
+    const dayOfWeek = now.getDay();
+    const distanceToPayday = (dayOfWeek + 7 - payday) % 7; // Calculate the distance to the payday
+    const paydayDate = new Date(
       now.getFullYear(),
       now.getMonth(),
-      now.getDate() - distanceToThursday + offset * 7
+      now.getDate() - distanceToPayday + offset * 7
     );
-    return thursday;
+    return paydayDate;
   };
 
-  const startOfWeek = getThursdayOfLastWeek(weekOffset);
+  // Get the start and end of the week based on payday and week offset
+  const startOfWeek = getStartOfWeekBasedOnPayday(weekOffset);
   const endOfWeek = new Date(startOfWeek);
-  endOfWeek.setDate(startOfWeek.getDate() + 6);
-  endOfWeek.setHours(23, 59, 59, 999); // Set to the end of the day (23:59:59.999)
+  endOfWeek.setDate(startOfWeek.getDate() + 6); // End of the week is 6 days after the payday
+  endOfWeek.setHours(23, 59, 59, 999); // Set to the end of the day
 
+  // Filter the expenses based on the dynamic start and end of the week
   const weeklyExpenses = expenses
     .filter((expense) => {
       const expenseDate = new Date(expense.date);
@@ -39,7 +48,9 @@ const WeeklyExpensesWidget: React.FC<Props> = ({ expenses }) => {
     (total, expense) => total + expense.expense,
     0
   );
+  const grossWeeklyIncome = weeklyIncome - weeklyTotal;
 
+  // Class for the weekly total (for color grading based on total)
   const getTotalClass = (total: number) => {
     if (total <= 1250) {
       return `weekly-total total-${Math.round((total / 1250) * 10)}`;
@@ -89,6 +100,12 @@ const WeeklyExpensesWidget: React.FC<Props> = ({ expenses }) => {
           <h4>Weekly Total:</h4>
           <div className={getTotalClass(weeklyTotal)}>
             <h4>${weeklyTotal.toFixed(2)}</h4>
+          </div>
+        </div>
+        <div className="row">
+          <h4>Gross Weekly Income:</h4>
+          <div className="gross-weekly-income">
+            <h4>${grossWeeklyIncome.toFixed(2)}</h4>
           </div>
         </div>
         <hr />
