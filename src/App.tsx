@@ -54,12 +54,12 @@ function App() {
     sm: [
       { i: "widget1", x: 0, y: 6, w: 6, h: isOverallDropdownOpen ? 6 : 1 },
       { i: "widget2", x: 0, y: 0, w: 6, h: isWeeklyDropdownOpen ? 10 : 3 },
-      { i: "widget3", x: 0, y: 10, w: 6, h: isLineChartDropdownOpen ? 5 : 1 },
+      { i: "widget3", x: 0, y: 10, w: 6, h: isLineChartDropdownOpen ? 5 : 2 },
     ],
     xs: [
       { i: "widget1", x: 0, y: 6, w: 6, h: isOverallDropdownOpen ? 6 : 1 },
       { i: "widget2", x: 0, y: 0, w: 6, h: isWeeklyDropdownOpen ? 10 : 3 },
-      { i: "widget3", x: 0, y: 10, w: 6, h: isLineChartDropdownOpen ? 5 : 1 },
+      { i: "widget3", x: 0, y: 10, w: 6, h: isLineChartDropdownOpen ? 5 : 2 },
     ],
   };
 
