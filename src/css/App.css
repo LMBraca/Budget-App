@@ -26,7 +26,7 @@ main {
 /* Container for widgets */
 .widget-container {
   display: flex;
-  gap: 1rem; /* Space between widgets */
+  gap: 3rem; /* Space between widgets */
   flex-wrap: wrap; /* Ensure widgets wrap to a new line if they exceed the width */
   overflow-x: hidden; /* Disable horizontal scrolling in the container */
 }
@@ -96,6 +96,12 @@ body, .widget-container {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Standard property */
+}
+
+.react-grid-layout.layout {
+  height: auto; /* Dynamically adjusts the height */
+  min-height: 325px; /* Optional: sets a minimum height */
+  padding: 1rem; /* Optional: add some padding */
 }
 
 /* Responsive styles for mobile screens */
