@@ -42,9 +42,9 @@ function App() {
   // Adjust the layout dynamically based on dropdown state
   const layouts = {
     lg: [
-      { i: "widget1", x: 3, y: 0, w: 3, h: isOverallDropdownOpen ? 8 : 1 }, // Adjust height based on dropdown for OverallExpensesWidget
+      { i: "widget1", x: 3, y: 0, w: 3, h: isOverallDropdownOpen ? 8 : 2 }, // Adjust height based on dropdown for OverallExpensesWidget
       { i: "widget2", x: 0, y: 0, w: 3, h: isWeeklyDropdownOpen ? 10 : 3 }, // Adjust height based on dropdown for WeeklyExpensesWidget
-      { i: "widget3", x: 0, y: 10, w: 10, h: isLineChartDropdownOpen ? 10 : 1 },
+      { i: "widget3", x: 0, y: 10, w: 10, h: isLineChartDropdownOpen ? 10 : 2 },
     ],
     md: [
       { i: "widget1", x: 3, y: 0, w: 3, h: isOverallDropdownOpen ? 8 : 1 },
@@ -53,7 +53,7 @@ function App() {
     ],
     sm: [
       { i: "widget1", x: 0, y: 6, w: 6, h: isOverallDropdownOpen ? 6 : 1 },
-      { i: "widget2", x: 0, y: 0, w: 6, h: isWeeklyDropdownOpen ? 10 : 3 },
+      { i: "widget2", x: 0, y: 0, w: 6, h: isWeeklyDropdownOpen ? 10 : 2 },
       { i: "widget3", x: 0, y: 10, w: 6, h: isLineChartDropdownOpen ? 5 : 2 },
     ],
     xs: [
