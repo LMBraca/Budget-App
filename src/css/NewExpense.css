@@ -36,7 +36,7 @@
   cursor: pointer;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  z-index: 1000; /* Ensure button is on top */
+  z-index: 900; /* Ensure button is on top */
 }
 
 .set-weekly-income-widget:hover {
@@ -66,6 +66,7 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Larger shadow for depth */
   width: 320px; /* Slightly wider for more comfortable input */
   animation: slideIn 0.3s ease-in-out;
+  z-index: 1000; /* Ensure button is on top */
 }
 
 .expense-form h3 {
@@ -202,7 +203,7 @@ select:focus {
   cursor: pointer;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  z-index: 1000;
+  z-index: 900;
 }
 
 .floating-debt:hover {
