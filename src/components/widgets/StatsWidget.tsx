@@ -7,6 +7,7 @@ interface Props {
   payday: number; // Weekday as a number (0 = Sunday, 1 = Monday, etc.)
   income: number; // Weekly income
   startDate: Date | null;
+  onDropdownToggle: (isOpen: boolean) => void; // Prop to handle dropdown toggle event
 }
 
 const StatsWidget: React.FC<Props> = ({
@@ -14,8 +15,10 @@ const StatsWidget: React.FC<Props> = ({
   payday,
   income,
   startDate,
+  onDropdownToggle,
 }) => {
   const [expensesState, setExpenses] = useState<Expense[]>(expenses);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Dropdown state
 
   // Total spent
   const totalExpenses = expenses.reduce(
@@ -81,43 +84,57 @@ const StatsWidget: React.FC<Props> = ({
 
   const averageMonthlySpent = calculateAverageMonthlySpent();
 
+  // Update the expenses state when the expenses prop changes
   useEffect(() => {
     setExpenses(expenses);
   }, [expenses]);
 
+  // Notify parent when dropdown state changes
+  useEffect(() => {
+    onDropdownToggle(isDropdownOpen);
+  }, [isDropdownOpen, onDropdownToggle]);
+
+  // Toggle the dropdown state
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => !prev);
+  };
+
   return (
     <div className="overall-expenses-widget">
-      <div className="widget-header">
+      <div className="widget-header" onClick={toggleDropdown}>
         <h2 className="dropdown-header">Stats</h2>
-        <hr></hr>
+        <hr />
       </div>
 
-      <div className="dropdown-content">
-        <div className="row">
-          <h4>Total spent:</h4>
-          <p>${totalExpenses.toFixed(2)}</p>
+      {/* Show or hide content based on dropdown state */}
+      {isDropdownOpen && (
+        <div className="dropdown-content">
+          <div className="row">
+            <h4>Total spent:</h4>
+            <p>${totalExpenses.toFixed(2)}</p>
+          </div>
+          <hr />
+          <div className="row">
+            <h4>Total income:</h4>
+            <p>${totalIncome.toFixed(2)}</p>
+          </div>
+          <hr />
+          <div className="row">
+            <h4>Net income:</h4>
+            <p>${netIncome.toFixed(2)}</p>
+          </div>
+          <hr />
+          <div className="row">
+            <h4>Average weekly spent:</h4>
+            <p>${averageWeeklySpent.toFixed(2)}</p>
+          </div>
+          <hr />
+          <div className="row">
+            <h4>Average monthly spent:</h4>
+            <p>${averageMonthlySpent.toFixed(2)}</p>
+          </div>
         </div>
-        <hr></hr>
-        <div className="row">
-          <h4>Total income:</h4>
-          <p>${totalIncome.toFixed(2)}</p>
-        </div>
-        <hr></hr>
-        <div className="row">
-          <h4>Net income:</h4>
-          <p>${netIncome.toFixed(2)}</p>
-        </div>
-        <hr></hr>
-        <div className="row">
-          <h4>Average weekly spent:</h4>
-          <p>${averageWeeklySpent.toFixed(2)}</p>
-        </div>
-        <hr></hr>
-        <div className="row">
-          <h4>Average monthly spent:</h4>
-          <p>${averageMonthlySpent.toFixed(2)}</p>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

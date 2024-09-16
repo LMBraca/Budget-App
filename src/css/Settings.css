@@ -1,3 +1,23 @@
+.floating-settings{
+  position: fixed;
+  bottom: 140px; /* Position debt button above the expense button */
+  right: 20px;
+  background-color: #007bff; /* Red for debt */
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+.floating-settings:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Elevate the button */
+}
 /* Overlay to darken the background */
 .overlay {
   position: fixed;
@@ -94,6 +114,7 @@ button {
   border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
+  
 }
 
 button:hover {

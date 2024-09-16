@@ -27,7 +27,7 @@
   position: fixed;
   bottom: 80px; /* Higher than the Add Expense button */
   right: 20px;
-  background-color: #28a745; /* Green color for differentiation */
+  background-color: #dc3545; /* Green color for differentiation */
   color: #ffffff;
   padding: 12px 20px;
   border-radius: 50px;
@@ -40,7 +40,7 @@
 }
 
 .set-weekly-income-widget:hover {
-  background-color: #218838;
+  background-color: #c82333;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -165,6 +165,49 @@ select:focus {
   border-color: #007bff; /* Border color when focused */
   outline: none; /* Remove default focus outline */
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.2); /* Soft shadow on focus */
+}
+/* Floating widget button for adding an expense */
+.floating-expense {
+  position: fixed;
+  bottom: 20px; /* Position the expense button at the bottom */
+  right: 20px;
+  background-color: #dc3545; /* Blue for expense */
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+.floating-expense:hover {
+  background-color: #c82333; /* Darker blue on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Elevate the button */
+}
+
+/* Floating widget button for adding a debt */
+.floating-debt {
+  position: fixed;
+  bottom: 80px; /* Position debt button above the expense button */
+  right: 20px;
+  background-color: #28a745; /* Red for debt */
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+.floating-debt:hover {
+  background-color: #218838; /* Darker red on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Elevate the button */
 }
 
 

@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { Expense } from '../shared/expense';
+import { Debt } from "../shared/debt";
 
 const supabaseUrl = 'https://doabuygwmiikcxuleuiq.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRvYWJ1eWd3bWlpa2N4dWxldWlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjU0MTUzMTEsImV4cCI6MjA0MDk5MTMxMX0.BBL2eLpWi26D8OAmJaDHzCLfb9sgfnI56WRx3j7uw6I'; // Ensure this key is kept secure
@@ -238,5 +239,86 @@ export const fetchStartDate = async (): Promise<Date | null> => {
     return data?.StartDate ? new Date(data.StartDate) : null;
   } catch (error) {
     return null;
+  }
+};
+
+export const fetchDebts = async (): Promise<Debt[]> => {
+  const userId = localStorage.getItem("userId");
+  if (!userId) {
+    return [];
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from("Debts")
+      .select("*")
+      .eq("IdUser", parseInt(userId));
+
+    if (error) {
+      return [];
+    }
+
+    const debts: Debt[] = data.map((row: any) => ({
+      idDebt: row.IdDebt,
+      debt: parseFloat(row.Debt),
+      description: row.Description,
+      name: row.Name,
+      date: new Date(row.Date),
+      idUser: row.IdUser,
+      paid: row.Paid
+    }));
+
+    return debts;
+  } catch (error) {
+    return [];
+  }
+};
+
+export const updateDebt = async (debt: Debt) => {
+  try {
+    const { data, error } = await supabase
+      .from('Debts')
+      .update({
+        Description: debt.description,
+        Debt: debt.debt,
+        Name: debt.name,
+        Date: debt.date,
+        Paid: debt.paid, // This is now boolean: true or false
+      })
+      .eq('IdDebt', debt.idDebt);
+
+    if (error) {
+      return { success: false, error };
+    }
+
+    return { success: true, data };
+  } catch (err) {
+    return { success: false, error: err };
+  }
+};
+
+// Insert a new debt into the database
+export const insertDebt = async (debt: Debt) => {
+  try {
+    const { data, error } = await supabase
+      .from('Debts')
+      .insert([
+        {
+          Description: debt.description,
+          Debt: debt.debt,
+          Name: debt.name,
+          Date: debt.date, // Ensure this is in the correct format
+          IdUser: debt.idUser, // The ID of the logged-in user
+          Paid: debt.paid, // Initially false, as the debt hasn't been paid
+        },
+      ]);
+
+    if (error) {
+      return { success: false, error };
+    }
+
+    return { success: true, data };
+  } catch (err) {
+    return { success: false, error: err };
   }
 };

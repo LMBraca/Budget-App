@@ -101,7 +101,8 @@ const WeeklyExpensesWidget: React.FC<Props> = ({
 
   const toggleDropdown = () => {
     setIsDropdownOpen((prev) => {
-      onDropdownToggle(!prev); // Notify parent of the dropdown toggle state
+      // Use a timeout to ensure the state update happens after rendering is complete
+      setTimeout(() => onDropdownToggle(!prev), 0);
       return !prev;
     });
   };

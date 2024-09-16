@@ -68,7 +68,7 @@ const Settings: React.FC<SettingsProps> = ({
   return (
     <>
       <div
-        className="set-weekly-income-widget"
+        className="floating-settings"
         onClick={toggleForm}
         role="button"
         tabIndex={0}
