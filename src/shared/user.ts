@@ -5,15 +5,20 @@ import { Entity, Fields } from "remult";
 })
 export class User {
     @Fields.autoIncrement()
-    idUser = 0; // This corresponds to the "IdExpense" column in the database
+    idUser = 0; // This corresponds to the "IdUser" column in the database
 
     @Fields.string()
-    username = ""; // This corresponds to the "Expense" column in the database
+    username = ""; // This corresponds to the "Username" column in the database
 
     @Fields.string()
-    password = ""; // This corresponds to the "Description" column in the database
+    password = ""; // This corresponds to the "Password" column in the database
 
     @Fields.number()
-    weeklyIncome = "";
-    
+    weeklyIncome = 0; // This corresponds to the "WeeklyIncome" column in the database
+
+    @Fields.number()
+    payday = 0; // This corresponds to the "Payday" column in the database
+
+    @Fields.date()
+    startDate = new Date(); // This corresponds to the "StartDate" column in the database
 }
