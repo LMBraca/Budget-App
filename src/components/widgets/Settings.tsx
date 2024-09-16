@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { updateWeeklyIncomeAndPayday } from "../../services/expenseService";
-import "../../css/NewExpense.css"; // Import custom CSS for this widget
+import { updateSettings } from "../../services/expenseService";
+import "../../css/Settings.css";
+import { useNavigate } from "react-router-dom";
+import settingsIcon from "/settings.svg"; // Adjust path as needed
 
-interface SetWeeklyIncomeProps {
+interface SettingsProps {
   currentWeeklyIncome: number;
   currentPayday: number;
   setWeeklyIncome: (income: number) => void;
   setPayday: (day: number) => void;
 }
 
-const SetWeeklyIncome: React.FC<SetWeeklyIncomeProps> = ({
+const Settings: React.FC<SettingsProps> = ({
   currentWeeklyIncome,
   currentPayday,
   setWeeklyIncome,
@@ -17,11 +19,12 @@ const SetWeeklyIncome: React.FC<SetWeeklyIncomeProps> = ({
 }) => {
   const [showForm, setShowForm] = useState(false);
   const [income, setIncome] = useState<string>("");
-  const [payday, setPaydayValue] = useState<number | string>(""); // Add state for payday
+  const [payday, setPaydayValue] = useState<number | string>("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  // Initialize the input fields with current income and payday when the component loads
+  const navigate = useNavigate();
+
   useEffect(() => {
     setIncome(currentWeeklyIncome.toString());
     setPaydayValue(currentPayday.toString());
@@ -46,31 +49,53 @@ const SetWeeklyIncome: React.FC<SetWeeklyIncomeProps> = ({
     const newPayday = parseInt(payday as string);
 
     try {
-      await updateWeeklyIncomeAndPayday(newIncome, newPayday); // Call the service to update both income and payday
-      setWeeklyIncome(newIncome); // Update income in the parent state
-      setPayday(newPayday); // Update payday in the parent state
-      toggleForm(); // Close the form
+      await updateSettings(newIncome, newPayday);
+      setWeeklyIncome(newIncome);
+      setPayday(newPayday);
+      toggleForm();
     } catch (error) {
-      console.error("Error updating income and payday:", error);
       setError("Failed to update income and payday. Please try again.");
     }
 
     setLoading(false);
   };
 
+  const handleSignOut = () => {
+    localStorage.clear();
+    navigate("/signin");
+  };
+
   return (
     <>
-      {/* Floating widget button */}
-      <div className="set-weekly-income-widget" onClick={toggleForm}>
-        <p style={{ color: "white" }}>+ Set Income & Payday</p>
+      <div
+        className="floating-settings"
+        onClick={toggleForm}
+        role="button"
+        tabIndex={0}
+        onKeyPress={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            toggleForm();
+          }
+        }}
+      >
+        {/* Replace text with SVG icon */}
+        <img src={settingsIcon} alt="Settings" className="settings-icon" />
       </div>
 
-      {/* Form to set weekly income and payday */}
       {showForm && (
         <div className="overlay">
           <div className="expense-form">
+            {/* Sign-out button with text */}
+            <button type="button" className="sign-out" onClick={handleSignOut}>
+              Sign Out
+            </button>
+
+            {/* Centered title */}
+            <br></br>
+            <h3 className="settings-title">Settings</h3>
+            <br></br>
+            <br></br>
             <form onSubmit={handleFormSubmit}>
-              <h3>Set Weekly Income & Payday</h3>
               <div className="form-group">
                 <label htmlFor="income">Weekly Income:</label>
                 <input
@@ -120,4 +145,4 @@ const SetWeeklyIncome: React.FC<SetWeeklyIncomeProps> = ({
   );
 };
 
-export default SetWeeklyIncome;
+export default Settings;

@@ -3,30 +3,42 @@ import { Responsive, WidthProvider } from "react-grid-layout";
 import "./css/App.css";
 import { Expense } from "./shared/expense";
 import OverallExpensesWidget from "./components/widgets/OverallExpensesWidget";
+import StatsWidget from "./components/widgets/StatsWidget";
 import WeeklyExpensesWidget from "./components/widgets/WeeklyExpensesWidget";
+import OverallDebtsWidget from "./components/widgets/OverallDebtsWidget";
 import {
   fetchExpenses,
   fetchWeeklyIncome,
   fetchPayday,
-} from "./services/expenseService"; // Import fetchPayday
+  fetchStartDate,
+  fetchDebts,
+} from "./services/expenseService";
 import "react-grid-layout/css/styles.css";
 import LineChartExpensesWidget from "./components/widgets/LineChartExpensesWidget";
 import NewExpense from "./components/widgets/NewExpense";
-import SetWeeklyIncome from "./components/widgets/SetWeeklyIncome"; // Import SetWeeklyIncome
+import Settings from "./components/widgets/Settings";
+import { Debt } from "./shared/debt";
+import NewDebt from "./components/widgets/NewDebt";
 
 // Wrap Responsive with WidthProvider
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 function App() {
   const [expenses, setExpenses] = useState<Expense[]>([]);
+  const [debts, setDebts] = useState<Debt[]>([]);
   const [weeklyIncome, setWeeklyIncome] = useState<number>(0);
+  const [startDate, setStartDate] = useState<Date | null>(null);
   const [payday, setPayday] = useState<number>(4);
-  const [isOverallDropdownOpen, setIsOverallDropdownOpen] = useState(false); // Track dropdown state for OverallExpensesWidget
-  const [isWeeklyDropdownOpen, setIsWeeklyDropdownOpen] = useState(true); // Track dropdown state for WeeklyExpensesWidget
-  const [isLineChartDropdownOpen, setIsLineChartDropdownOpen] = useState(false); // Track dropdown state for WeeklyExpensesWidget
+  const [isOverallDropdownOpen, setIsOverallDropdownOpen] = useState(false);
+  const [isOverallDebtDropdownOpen, setIsOverallDebtDropdownOpen] =
+    useState(false);
+  const [isWeeklyDropdownOpen, setIsWeeklyDropdownOpen] = useState(true);
+  const [isLineChartDropdownOpen, setIsLineChartDropdownOpen] = useState(false);
+  const [isStatsDropdownOpen, setIsStatsDropdownOpen] = useState(false);
 
   useEffect(() => {
     fetchExpenses().then(setExpenses);
+    fetchDebts().then(setDebts);
     fetchWeeklyIncome().then((income) => {
       if (income !== null) {
         setWeeklyIncome(income);
@@ -37,34 +49,46 @@ function App() {
         setPayday(day);
       }
     });
+    fetchStartDate().then((startDay) => {
+      if (startDay) {
+        setStartDate(startDay);
+      }
+    });
   }, []);
 
-  // Adjust the layout dynamically based on dropdown state
   const layouts = {
     lg: [
-      { i: "widget1", x: 3, y: 0, w: 3, h: isOverallDropdownOpen ? 8 : 2 }, // Adjust height based on dropdown for OverallExpensesWidget
-      { i: "widget2", x: 0, y: 0, w: 3, h: isWeeklyDropdownOpen ? 10 : 3 }, // Adjust height based on dropdown for WeeklyExpensesWidget
+      { i: "widget2", x: 0, y: 0, w: 3, h: isWeeklyDropdownOpen ? 10 : 3 },
+      { i: "widget1", x: 3, y: 0, w: 3, h: isOverallDropdownOpen ? 8 : 2 },
+      { i: "widget5", x: 6, y: 0, w: 3, h: isOverallDebtDropdownOpen ? 8 : 1 },
+      { i: "widget4", x: 6, y: 0, w: 4, h: isStatsDropdownOpen ? 5 : 1 },
       { i: "widget3", x: 0, y: 10, w: 10, h: isLineChartDropdownOpen ? 10 : 2 },
     ],
     md: [
-      { i: "widget1", x: 3, y: 0, w: 3, h: isOverallDropdownOpen ? 8 : 1 },
       { i: "widget2", x: 0, y: 0, w: 3, h: isWeeklyDropdownOpen ? 10 : 3 },
-      { i: "widget3", x: 0, y: 10, w: 8, h: isLineChartDropdownOpen ? 10 : 1 },
+      { i: "widget1", x: 3, y: 0, w: 3, h: isOverallDropdownOpen ? 8 : 1 },
+      { i: "widget5", x: 6, y: 0, w: 3, h: isOverallDebtDropdownOpen ? 8 : 1 },
+      { i: "widget4", x: 0, y: 10, w: 2, h: isStatsDropdownOpen ? 5 : 1 },
+      { i: "widget3", x: 2, y: 10, w: 7, h: isLineChartDropdownOpen ? 8 : 2 },
     ],
     sm: [
-      { i: "widget1", x: 0, y: 6, w: 6, h: isOverallDropdownOpen ? 6 : 1 },
       { i: "widget2", x: 0, y: 0, w: 6, h: isWeeklyDropdownOpen ? 10 : 2 },
-      { i: "widget3", x: 0, y: 10, w: 6, h: isLineChartDropdownOpen ? 5 : 2 },
+      { i: "widget1", x: 0, y: 6, w: 6, h: isOverallDropdownOpen ? 6 : 1 },
+      { i: "widget5", x: 0, y: 12, w: 6, h: isOverallDebtDropdownOpen ? 6 : 1 },
+      { i: "widget4", x: 0, y: 18, w: 6, h: isStatsDropdownOpen ? 5 : 1 },
+      { i: "widget3", x: 0, y: 24, w: 6, h: isLineChartDropdownOpen ? 5 : 2 },
     ],
     xs: [
-      { i: "widget1", x: 0, y: 6, w: 6, h: isOverallDropdownOpen ? 6 : 1 },
       { i: "widget2", x: 0, y: 0, w: 6, h: isWeeklyDropdownOpen ? 10 : 3 },
-      { i: "widget3", x: 0, y: 10, w: 6, h: isLineChartDropdownOpen ? 5 : 2 },
+      { i: "widget1", x: 0, y: 6, w: 6, h: isOverallDropdownOpen ? 6 : 1 },
+      { i: "widget5", x: 0, y: 12, w: 6, h: isOverallDebtDropdownOpen ? 6 : 1 },
+      { i: "widget4", x: 0, y: 18, w: 6, h: isStatsDropdownOpen ? 5 : 1 },
+      { i: "widget3", x: 0, y: 24, w: 6, h: isLineChartDropdownOpen ? 5 : 2 },
     ],
   };
 
   const breakpoints = { lg: 1200, md: 996, sm: 768, xs: 480 };
-  const cols = { lg: 10, md: 8, sm: 6, xs: 6 };
+  const cols = { lg: 10, md: 9, sm: 6, xs: 6 };
 
   return (
     <div>
@@ -78,22 +102,38 @@ function App() {
           preventCollision={true}
           isDraggable={false}
           isResizable={false}
-          rowHeight={60}
+          rowHeight={80}
         >
           <div key="widget2" className="widget">
             <WeeklyExpensesWidget
               expenses={expenses}
               weeklyIncome={weeklyIncome}
               payday={payday}
-              onDropdownToggle={setIsWeeklyDropdownOpen} // Pass the dropdown toggle handler for WeeklyExpensesWidget
+              onDropdownToggle={setIsWeeklyDropdownOpen}
             />
           </div>
           <div key="widget1" className="widget">
             <OverallExpensesWidget
               expenses={expenses}
-              onDropdownToggle={setIsOverallDropdownOpen} // Pass the dropdown toggle handler for OverallExpensesWidget
+              onDropdownToggle={setIsOverallDropdownOpen}
             />
           </div>
+          <div key="widget5" className="widget">
+            <OverallDebtsWidget
+              debts={debts}
+              onDropdownToggle={setIsOverallDebtDropdownOpen}
+            />
+          </div>
+          <div key="widget4" className="widget">
+            <StatsWidget
+              expenses={expenses}
+              payday={payday}
+              income={weeklyIncome}
+              startDate={startDate}
+              onDropdownToggle={setIsStatsDropdownOpen}
+            />
+          </div>
+
           <div key="widget3" className="widget">
             <LineChartExpensesWidget
               expenses={expenses}
@@ -101,10 +141,9 @@ function App() {
             />
           </div>
         </ResponsiveGridLayout>
-
-        {/* Floating buttons */}
         <NewExpense />
-        <SetWeeklyIncome
+        <NewDebt /> {/* New Add Debt button */}
+        <Settings
           currentWeeklyIncome={weeklyIncome}
           currentPayday={payday}
           setWeeklyIncome={setWeeklyIncome}

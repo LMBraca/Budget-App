@@ -19,9 +19,6 @@ export class Expense {
     @Fields.date()
     date = new Date(); // This corresponds to the "Date" column in the database (timestamp)
 
-    // The "time" field is not present in your database, so it should be removed from the model
-    // @Fields.string()
-    // time = ""; // Remove this line
 
     @Fields.number()
     idUser = 0; // This corresponds to the "IdUser" column in the database
