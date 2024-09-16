@@ -36,7 +36,6 @@ const NewExpense: React.FC = () => {
     }
 
     const combinedDateTime = new Date(dateTime);
-    console.log(combinedDateTime);
 
     const newExpense = new Expense(); // Create a new Expense instance
     newExpense.description = description;
@@ -55,7 +54,6 @@ const NewExpense: React.FC = () => {
       setDateTime("");
       window.location.reload();
     } catch (error) {
-      console.error("Error adding expense:", error);
       setError("An unexpected error occurred. Please try again.");
     }
 

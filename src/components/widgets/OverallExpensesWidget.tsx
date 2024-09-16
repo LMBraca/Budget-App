@@ -32,12 +32,10 @@ const OverallExpensesWidget: React.FC<Props> = ({
   );
 
   const handleEditClick = (expense: Expense) => {
-    console.log("Editing expense:", expense);
     setEditingExpense(expense);
   };
 
   const handleUpdateSubmit = async (updatedExpense: Expense) => {
-    console.log("Updating expense:", updatedExpense);
     await updateExpense(updatedExpense); // Update API call
     setEditingExpense(null);
 
@@ -50,7 +48,6 @@ const OverallExpensesWidget: React.FC<Props> = ({
   };
 
   const handleCancelEdit = () => {
-    console.log("Canceling edit");
     setEditingExpense(null);
   };
 

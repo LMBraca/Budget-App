@@ -1,0 +1,128 @@
+/* Overlay to darken the background */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Expense form */
+.expense-form {
+  position: relative;
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  width: 320px;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+/* Center the settings title */
+.settings-title {
+  text-align: center;
+  margin-top: 0;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* Form group */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-top: 5px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+/* Sign-out button with text but smaller */
+.sign-out {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 5px 10px; /* Smaller padding to reduce button height */
+  border-radius: 4px; /* Adjust border-radius to keep a nice shape */
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.8rem; /* Smaller font size */
+  width: auto; /* Auto width to avoid full width of container */
+  max-width: 80px; /* Set a max width for the button */
+  text-align: center; /* Ensure the text is centered */
+}
+
+.sign-out:hover {
+  background-color: #ff7875;
+}
+
+
+/* Buttons at the bottom */
+.button-container {
+  margin-top: 20px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button.cancel {
+  background-color: #6c757d;
+}
+
+button.cancel:hover {
+  background-color: #5a6268;
+}
+
+/* Error message */
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Form slide-in animation */
+@keyframes slideIn {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

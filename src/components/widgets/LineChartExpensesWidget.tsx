@@ -38,7 +38,7 @@ const LineChartExpensesWidget: React.FC<Props> = ({
   onDropdownToggle,
 }) => {
   const [xAxisType, setXAxisType] = useState<"day" | "week" | "month">("day");
-  const [isDropdownOpen, setIsDropdownOpen] = useState(true); // State to handle dropdown visibility
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State to handle dropdown visibility
 
   // Sort expenses by date before processing
   const sortedExpenses = [...expenses].sort((a, b) => {
@@ -140,42 +140,40 @@ const LineChartExpensesWidget: React.FC<Props> = ({
       <div className="widget-header" onClick={toggleDropdown}>
         <h2>Expenses Line Chart</h2>
       </div>
+      <div className="xaxis-buttons row">
+        <button
+          className="nav-button no-drag"
+          onClick={() => handleXAxisTypeChange("day")}
+        >
+          Days
+        </button>
+        <button
+          className="nav-button no-drag"
+          onClick={() => handleXAxisTypeChange("week")}
+        >
+          Weeks
+        </button>
+        <button
+          className="nav-button no-drag"
+          onClick={() => handleXAxisTypeChange("month")}
+        >
+          Months
+        </button>
+      </div>
 
       {/* Apply 'closed' class if dropdown is not open */}
-      <div className={`widget-content ${isDropdownOpen ? "" : "closed"}`}>
-        {isDropdownOpen && (
-          <>
-            {/* Content like the buttons and chart go here */}
-            <div className="xaxis-buttons row">
-              <button
-                className="nav-button no-drag"
-                onClick={() => handleXAxisTypeChange("day")}
-              >
-                Days
-              </button>
-              <button
-                className="nav-button no-drag"
-                onClick={() => handleXAxisTypeChange("week")}
-              >
-                Weeks
-              </button>
-              <button
-                className="nav-button no-drag"
-                onClick={() => handleXAxisTypeChange("month")}
-              >
-                Months
-              </button>
-            </div>
-            <br />
-            <hr />
-            {sortedExpenses.length > 0 ? (
-              <Line data={data} options={options} />
-            ) : (
-              <p>No expenses available to display.</p>
-            )}
-          </>
-        )}
-      </div>
+
+      {isDropdownOpen && (
+        <div className="dropdown-content">
+          {/* Content like the buttons and chart go here */}
+          <hr />
+          {sortedExpenses.length > 0 ? (
+            <Line data={data} options={options} />
+          ) : (
+            <p>No expenses available to display.</p>
+          )}
+        </div>
+      )}
     </div>
   );
 };

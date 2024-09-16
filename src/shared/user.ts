@@ -15,4 +15,5 @@ export class User {
 
     @Fields.number()
     weeklyIncome = "";
+    
 }
