@@ -58,7 +58,7 @@ function App() {
       { i: "widget2", x: 0, y: 0, w: 3, h: isWeeklyDropdownOpen ? 10 : 3 },
       { i: "widget1", x: 3, y: 0, w: 3, h: isOverallDropdownOpen ? 8 : 1 },
       { i: "widget4", x: 6, y: 0, w: 2, h: 5 },
-      { i: "widget3", x: 0, y: 10, w: 8, h: isLineChartDropdownOpen ? 10 : 1 },
+      { i: "widget3", x: 0, y: 10, w: 8, h: isLineChartDropdownOpen ? 10 : 2 },
     ],
     sm: [
       { i: "widget2", x: 0, y: 0, w: 6, h: isWeeklyDropdownOpen ? 10 : 2 },
@@ -89,7 +89,7 @@ function App() {
           preventCollision={true}
           isDraggable={false}
           isResizable={false}
-          rowHeight={60}
+          rowHeight={80}
         >
           <div key="widget2" className="widget">
             <WeeklyExpensesWidget
