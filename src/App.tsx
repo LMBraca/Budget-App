@@ -51,25 +51,25 @@ function App() {
     lg: [
       { i: "widget2", x: 0, y: 0, w: 3, h: isWeeklyDropdownOpen ? 10 : 3 },
       { i: "widget1", x: 3, y: 0, w: 3, h: isOverallDropdownOpen ? 8 : 2 },
-      { i: "widget4", x: 6, y: 0, w: 4, h: 3 },
+      { i: "widget4", x: 6, y: 0, w: 4, h: 5 },
       { i: "widget3", x: 0, y: 10, w: 10, h: isLineChartDropdownOpen ? 10 : 2 },
     ],
     md: [
       { i: "widget2", x: 0, y: 0, w: 3, h: isWeeklyDropdownOpen ? 10 : 3 },
       { i: "widget1", x: 3, y: 0, w: 3, h: isOverallDropdownOpen ? 8 : 1 },
-      { i: "widget4", x: 6, y: 0, w: 2, h: 3 },
+      { i: "widget4", x: 6, y: 0, w: 2, h: 5 },
       { i: "widget3", x: 0, y: 10, w: 8, h: isLineChartDropdownOpen ? 10 : 1 },
     ],
     sm: [
       { i: "widget2", x: 0, y: 0, w: 6, h: isWeeklyDropdownOpen ? 10 : 2 },
       { i: "widget1", x: 0, y: 6, w: 6, h: isOverallDropdownOpen ? 6 : 1 },
-      { i: "widget4", x: 0, y: 12, w: 6, h: 3 },
+      { i: "widget4", x: 0, y: 12, w: 6, h: 5 },
       { i: "widget3", x: 0, y: 14, w: 6, h: isLineChartDropdownOpen ? 5 : 2 },
     ],
     xs: [
       { i: "widget2", x: 0, y: 0, w: 6, h: isWeeklyDropdownOpen ? 10 : 3 },
       { i: "widget1", x: 0, y: 6, w: 6, h: isOverallDropdownOpen ? 6 : 1 },
-      { i: "widget4", x: 0, y: 12, w: 6, h: 2 },
+      { i: "widget4", x: 0, y: 12, w: 6, h: 5 },
       { i: "widget3", x: 0, y: 14, w: 6, h: isLineChartDropdownOpen ? 5 : 2 },
     ],
   };
@@ -106,8 +106,14 @@ function App() {
             />
           </div>
           <div key="widget4" className="widget">
-            <StatsWidget expenses={expenses} />
+            <StatsWidget
+              expenses={expenses}
+              payday={payday}
+              income={weeklyIncome}
+              startDate={startDate}
+            />
           </div>
+
           <div key="widget3" className="widget">
             <LineChartExpensesWidget
               expenses={expenses}

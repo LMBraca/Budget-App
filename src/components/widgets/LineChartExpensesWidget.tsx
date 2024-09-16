@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import {
   Chart,
@@ -39,6 +39,10 @@ const LineChartExpensesWidget: React.FC<Props> = ({
 }) => {
   const [xAxisType, setXAxisType] = useState<"day" | "week" | "month">("day");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State to handle dropdown visibility
+
+  useEffect(() => {
+    onDropdownToggle(isDropdownOpen); // Notify parent when the dropdown state changes
+  }, [isDropdownOpen, onDropdownToggle]); // Only trigger when isDropdownOpen changes
 
   // Sort expenses by date before processing
   const sortedExpenses = [...expenses].sort((a, b) => {
@@ -129,10 +133,7 @@ const LineChartExpensesWidget: React.FC<Props> = ({
   };
 
   const toggleDropdown = () => {
-    setIsDropdownOpen((prev) => {
-      onDropdownToggle(!prev); // Notify parent of the dropdown toggle state
-      return !prev;
-    });
+    setIsDropdownOpen((prev) => !prev); // Update local state only
   };
 
   return (

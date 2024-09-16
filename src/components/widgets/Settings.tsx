@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { updateSettings } from "../../services/expenseService";
 import "../../css/Settings.css";
 import { useNavigate } from "react-router-dom";
+import settingsIcon from "/settings.svg"; // Adjust path as needed
 
 interface SettingsProps {
   currentWeeklyIncome: number;
@@ -77,7 +78,8 @@ const Settings: React.FC<SettingsProps> = ({
           }
         }}
       >
-        Settings
+        {/* Replace text with SVG icon */}
+        <img src={settingsIcon} alt="Settings" className="settings-icon" />
       </div>
 
       {showForm && (
