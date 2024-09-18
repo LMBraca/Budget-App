@@ -59,6 +59,9 @@ const WeeklyExpensesWidget: React.FC<Props> = ({
   } else {
     const endOfMonth = getEndOfMonth(monthOffset);
     endOfPeriod.setDate(endOfMonth.getDate()); // End of the month
+    endOfPeriod.setMonth(endOfMonth.getMonth());
+    endOfPeriod.setFullYear(endOfMonth.getFullYear());
+    endOfPeriod.setHours(23, 59, 59, 999); // Set to the end of the day
   }
 
   // Filter the expenses based on the dynamic start and end of the week/month
@@ -73,7 +76,12 @@ const WeeklyExpensesWidget: React.FC<Props> = ({
     (total, expense) => total + expense.expense,
     0
   );
-  const netIncome = weeklyIncome - periodTotal;
+
+  // Calculate net income based on view mode
+  const netIncome =
+    viewMode === "weekly"
+      ? weeklyIncome - periodTotal
+      : weeklyIncome * 4 - periodTotal;
 
   // Class for the total (for color grading based on total)
   const getTotalClass = (total: number) => {
