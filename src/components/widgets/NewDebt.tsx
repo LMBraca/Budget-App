@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Debt } from "../../shared/debt";
-import { insertDebt } from "../../services/expenseService";
+import { Debt } from "../../models/debt";
+import { insertDebt } from "../../services/debtService";
 import "../../css/NewExpense.css"; // Using the same CSS for consistency
 
 const NewDebt: React.FC = () => {

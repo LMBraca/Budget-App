@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Expense } from "../../shared/expense";
+import { Expense } from "../../models/expense";
 import "../../css/ExpensesWidget.css";
 
 interface Props {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { Debt } from "../shared/debt";
+import { Debt } from "../models/debt";
 import "../css/EditDebtForm.css"; // Make sure you have appropriate CSS for the form
 
 interface Props {

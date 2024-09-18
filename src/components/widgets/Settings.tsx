@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { updateSettings } from "../../services/expenseService";
+import { updateSettings } from "../../services/userService";
 import "../../css/Settings.css";
 import { useNavigate } from "react-router-dom";
 import settingsIcon from "/settings.svg"; // Adjust path as needed

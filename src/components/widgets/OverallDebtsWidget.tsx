@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Debt } from "../../shared/debt";
+import { Debt } from "../../models/debt";
 import "../../css/ExpensesWidget.css"; // You can reuse the styling from ExpensesWidget
-import { updateDebt } from "../../services/expenseService"; // Import your debt service
+import { updateDebt } from "../../services/debtService"; // Import your debt service
 import EditDebtForm from "../EditDebtForm"; // Import the EditDebtForm
 
 interface Props {

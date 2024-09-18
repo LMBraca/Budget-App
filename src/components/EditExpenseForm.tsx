@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { Expense } from "../shared/expense";
+import { Expense } from "../models/expense";
 import "../css/EditExpenseForm.css"; // Import the CSS file for styling the form
 
 interface Props {

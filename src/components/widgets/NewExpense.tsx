@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Expense } from "../../shared/expense";
+import { Expense } from "../../models/expense";
 import { insertExpense } from "../../services/expenseService";
 import "../../css/NewExpense.css"; // Import custom CSS for this widget
 
