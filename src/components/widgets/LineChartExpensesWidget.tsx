@@ -13,7 +13,7 @@ import {
 } from "chart.js";
 import "chartjs-adapter-date-fns"; // Import adapter for date-fns
 import { format, eachDayOfInterval, startOfWeek, startOfMonth } from "date-fns";
-import { Expense } from "../../shared/expense";
+import { Expense } from "../../models/expense";
 import "../../css/ExpensesWidget.css"; // Import the same CSS file
 
 // Register the required components

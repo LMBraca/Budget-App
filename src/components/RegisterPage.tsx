@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { checkUsernameUnique, registerUser } from "../services/expenseService";
+import { checkUsernameUnique, registerUser } from "../services/userService";
 import "../css/AuthPage.css"; // Using shared CSS
 
 const RegisterPage: React.FC = () => {

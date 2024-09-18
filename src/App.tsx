@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { Responsive, WidthProvider } from "react-grid-layout";
 import "./css/App.css";
-import { Expense } from "./shared/expense";
+import { Expense } from "./models/expense";
 import OverallExpensesWidget from "./components/widgets/OverallExpensesWidget";
 import StatsWidget from "./components/widgets/StatsWidget";
-import WeeklyExpensesWidget from "./components/widgets/WeeklyExpensesWidget";
+import PeriodExpensesWidget from "./components/widgets/PeriodExpensesWidget";
 import OverallDebtsWidget from "./components/widgets/OverallDebtsWidget";
+import { fetchExpenses } from "./services/expenseService";
 import {
-  fetchExpenses,
-  fetchWeeklyIncome,
   fetchPayday,
+  fetchWeeklyIncome,
   fetchStartDate,
-  fetchDebts,
-} from "./services/expenseService";
+} from "./services/userService";
+import { fetchDebts } from "./services/debtService";
 import "react-grid-layout/css/styles.css";
 import LineChartExpensesWidget from "./components/widgets/LineChartExpensesWidget";
 import NewExpense from "./components/widgets/NewExpense";
 import Settings from "./components/widgets/Settings";
-import { Debt } from "./shared/debt";
+import { Debt } from "./models/debt";
 import NewDebt from "./components/widgets/NewDebt";
 
 // Wrap Responsive with WidthProvider
@@ -105,7 +105,7 @@ function App() {
           rowHeight={80}
         >
           <div key="widget2" className="widget">
-            <WeeklyExpensesWidget
+            <PeriodExpensesWidget
               expenses={expenses}
               weeklyIncome={weeklyIncome}
               payday={payday}

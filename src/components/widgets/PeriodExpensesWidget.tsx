@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Expense } from "../../shared/expense";
+import { Expense } from "../../models/expense";
 import "../../css/ExpensesWidget.css"; // Import the CSS file
 import "../../css/ColorGrading.css"; // Import the shared CSS file
 import arrowSvg from "/arrow.svg"; // Adjust path as needed
@@ -11,7 +11,7 @@ interface Props {
   onDropdownToggle: (isOpen: boolean) => void; // Prop to handle dropdown toggle
 }
 
-const WeeklyExpensesWidget: React.FC<Props> = ({
+const PeriodExpensesWidget: React.FC<Props> = ({
   expenses,
   weeklyIncome,
   payday,
@@ -223,4 +223,4 @@ const WeeklyExpensesWidget: React.FC<Props> = ({
   );
 };
 
-export default WeeklyExpensesWidget;
+export default PeriodExpensesWidget;
