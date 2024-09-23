@@ -163,6 +163,16 @@
 }
 
 
+/* Add this to ExpensesWidget.css or the appropriate CSS file */
+
+.unpaid-count {
+  background-color: #ff4d4f; /* Red background */
+  color: white; /* White text */
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 0.8em; /* Smaller font size */
+  margin-left: 8px; /* Space between title and count */
+}
 
 
 /* Responsive styles for mobile */
