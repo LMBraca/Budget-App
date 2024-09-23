@@ -137,6 +137,7 @@ function App() {
           <div key="widget3" className="widget">
             <LineChartExpensesWidget
               expenses={expenses}
+              income={weeklyIncome}
               onDropdownToggle={setIsLineChartDropdownOpen}
             />
           </div>

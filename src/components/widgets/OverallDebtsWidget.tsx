@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Debt } from "../../models/debt";
-import "../../css/ExpensesWidget.css"; // You can reuse the styling from ExpensesWidget
+import "../../css/ExpensesWidget.css"; // Reuse the styling from ExpensesWidget
 import { updateDebt } from "../../services/debtService"; // Import your debt service
 import EditDebtForm from "../EditDebtForm"; // Import the EditDebtForm
 
@@ -24,6 +24,9 @@ const OverallDebtsWidget: React.FC<Props> = ({ debts, onDropdownToggle }) => {
     onDropdownToggle(isDropdownOpen);
   }, [isDropdownOpen, onDropdownToggle]);
 
+  // Calculate the number of unpaid debts
+  const unpaidCount = debtsState.filter((debt) => !debt.paid).length;
+
   // Sort debts: unpaid debts first (most recent), paid debts at the bottom (most recent)
   const sortedDebts = [...debtsState].sort((a, b) => {
     if (a.paid === b.paid) {
@@ -34,7 +37,7 @@ const OverallDebtsWidget: React.FC<Props> = ({ debts, onDropdownToggle }) => {
 
   // Mark a debt as paid
   const markAsPaid = async (debt: Debt) => {
-    const updatedDebt = { ...debt, paid: true }; // Set paid to true, since it's a boolean in the database
+    const updatedDebt = { ...debt, paid: true }; // Set paid to true
     await updateDebt(updatedDebt); // Update the debt status in the database
     setDebts((prevDebts) =>
       prevDebts.map((d) => (d.idDebt === debt.idDebt ? updatedDebt : d))
@@ -64,7 +67,9 @@ const OverallDebtsWidget: React.FC<Props> = ({ debts, onDropdownToggle }) => {
   return (
     <div className="overall-debts-widget">
       <div className="widget-header" onClick={toggleDropdown}>
-        <h2 className="dropdown-header">All Debts</h2>
+        <h2 className="dropdown-header">
+          All Debts <span className="unpaid-count">{unpaidCount}</span>
+        </h2>
         <hr />
       </div>
 
@@ -95,7 +100,7 @@ const OverallDebtsWidget: React.FC<Props> = ({ debts, onDropdownToggle }) => {
                   <p>${debt.debt.toFixed(2)}</p>
                 </div>
                 <div className="row">
-                  <h4>Name:</h4>
+                  <h4>Borrower:</h4>
                   <p>{debt.name || "No name available"}</p>
                 </div>
                 <div className="row">
