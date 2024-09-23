@@ -103,7 +103,7 @@ const NewDebt: React.FC = () => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="name">Name:</label>
+                <label htmlFor="name">Borrower:</label>
                 <input
                   type="text"
                   id="name"
