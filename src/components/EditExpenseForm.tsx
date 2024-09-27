@@ -1,12 +1,15 @@
+// EditExpenseForm.tsx
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { Expense } from "../models/expense";
 import "../css/EditExpenseForm.css"; // Import the CSS file for styling the form
+import { updateExpense, deleteExpense } from "../services/expenseService"; // Import deleteExpense
 
 interface Props {
   expense: Expense;
   onSubmit: (updatedExpense: Expense) => void;
   onCancel: () => void;
+  onDelete: (deletedExpenseId: number) => void; // New prop for handling deletion
 }
 
 // Helper function to convert Date object to YYYY-MM-DDTHH:mm format in local time
@@ -16,7 +19,12 @@ const formatDateTimeLocal = (date: Date) => {
   return localDate.toISOString().slice(0, 16); // Format to YYYY-MM-DDTHH:mm
 };
 
-const EditExpenseForm: React.FC<Props> = ({ expense, onSubmit, onCancel }) => {
+const EditExpenseForm: React.FC<Props> = ({
+  expense,
+  onSubmit,
+  onCancel,
+  onDelete, // Destructure onDelete
+}) => {
   // Initialize the state with the existing expense values
   const [description, setDescription] = useState(expense.description);
   const [expenseAmount, setExpenseAmount] = useState(
@@ -26,15 +34,16 @@ const EditExpenseForm: React.FC<Props> = ({ expense, onSubmit, onCancel }) => {
   const [dateTime, setDateTime] = useState(
     formatDateTimeLocal(new Date(expense.date)) // Use helper to get local time
   );
+  const [isDeleting, setIsDeleting] = useState(false); // State to handle deletion status
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); // Prevent traditional form submission
 
     // Combine the dateTime string into a Date object
     const combinedDateTime = new Date(dateTime);
 
     // Update the expense object with the new values
-    const updatedExpense = {
+    const updatedExpense: Expense = {
       ...expense,
       description,
       expense: parseFloat(expenseAmount), // Convert the expense to a number
@@ -42,7 +51,25 @@ const EditExpenseForm: React.FC<Props> = ({ expense, onSubmit, onCancel }) => {
       date: combinedDateTime, // Use the combined date and time
     };
 
-    onSubmit(updatedExpense); // Call the onSubmit prop to save the changes
+    // Call the onSubmit prop to save the changes
+    onSubmit(updatedExpense);
+  };
+
+  const handleDelete = async () => {
+    if (!window.confirm("Are you sure you want to delete this expense?")) {
+      return;
+    }
+
+    setIsDeleting(true);
+    const result = await deleteExpense(expense.id);
+
+    if (result.success) {
+      onDelete(expense.id); // Notify parent component about the deletion
+    } else {
+      alert("Failed to delete the expense. Please try again.");
+      console.error(result.error);
+    }
+    setIsDeleting(false);
   };
 
   const modalContent = (
@@ -71,6 +98,7 @@ const EditExpenseForm: React.FC<Props> = ({ expense, onSubmit, onCancel }) => {
               value={expenseAmount}
               onChange={(e) => setExpenseAmount(e.target.value)}
               required
+              step="0.01" // Optional: Specify step for decimal amounts
             />
           </div>
 
@@ -100,6 +128,14 @@ const EditExpenseForm: React.FC<Props> = ({ expense, onSubmit, onCancel }) => {
           <div className="button-container">
             <button type="submit" className="update">
               Update Expense
+            </button>
+            <button
+              type="button"
+              className="delete"
+              onClick={handleDelete}
+              disabled={isDeleting}
+            >
+              {isDeleting ? "Deleting..." : "Delete Expense"}
             </button>
             <button type="button" className="cancel" onClick={onCancel}>
               Cancel
