@@ -64,3 +64,22 @@ export const updateExpense = async (expense: Expense): Promise<{ success: boolea
     return { success: false, error: err };
   }
 };
+
+export const deleteExpense = async (
+  expenseId: number
+): Promise<{ success: boolean; error?: any }> => {
+  try {
+    const { error } = await supabase
+      .from('Expenses')
+      .delete()
+      .eq('IdExpense', expenseId);
+
+    if (error) {
+      return { success: false, error };
+    }
+
+    return { success: true };
+  } catch (err) {
+    return { success: false, error: err };
+  }
+};

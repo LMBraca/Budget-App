@@ -96,6 +96,26 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.delete {
+  background-color: #e74c3c; /* Red color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.delete:disabled {
+  background-color: #c0392b;
+  cursor: not-allowed;
+}
+
+/* Optional: Add hover effect */
+.delete:hover:not(:disabled) {
+  background-color: #c0392b;
+}
+
 /* Form slide-in animation */
 @keyframes slideIn {
   from {

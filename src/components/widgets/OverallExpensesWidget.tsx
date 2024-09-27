@@ -51,6 +51,11 @@ const OverallExpensesWidget: React.FC<Props> = ({
     setEditingExpense(null);
   };
 
+  const handleDelete = (deletedExpenseId: number) => {
+    setExpenses((prev) => prev.filter((exp) => exp.id !== deletedExpenseId));
+    setEditingExpense(null);
+  };
+
   const toggleDropdown = () => {
     setIsDropdownOpen((prev) => !prev); // Update dropdown state
   };
@@ -106,6 +111,7 @@ const OverallExpensesWidget: React.FC<Props> = ({
               expense={editingExpense}
               onSubmit={handleUpdateSubmit}
               onCancel={handleCancelEdit}
+              onDelete={handleDelete}
             />
           )}
         </div>
