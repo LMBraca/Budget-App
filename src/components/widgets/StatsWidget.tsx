@@ -35,43 +35,36 @@ const StatsWidget: React.FC<Props> = ({
     const now = new Date();
     const start = new Date(startDate);
 
-    // Log the current date and start date for reference
-    console.log("Current Date:", now);
-    console.log("Start Date:", start);
-
     // Adjust the startDate to align with the first payday
     const daysToPayday = (payday - start.getDay() + 7) % 7;
     const firstPayday = new Date(start);
     firstPayday.setDate(start.getDate() + daysToPayday);
 
-    console.log("Days to next payday from start date:", daysToPayday);
-    console.log("First Payday Date:", firstPayday);
+    if (now < firstPayday) {
+      console.log("Current date is before the first payday.");
+      return 0;
+    }
 
-    // Calculate total days from the start date to the current date
+    // Calculate total days from the first payday to now
     const totalDaysDifference = Math.floor(
-      (now.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)
+      (now.getTime() - firstPayday.getTime()) / (1000 * 60 * 60 * 24)
     );
-    console.log("Total Days Difference:", totalDaysDifference);
 
-    // Calculate full weeks from the start date
-    const fullWeeksFromStart = Math.floor(totalDaysDifference / 7);
+    // Calculate full weeks from the first payday
+    const fullWeeksFromFirstPayday = Math.floor(totalDaysDifference / 7);
 
     // Check if today is payday (today's day of the week equals payday)
     const isTodayPayday = now.getDay() === payday;
-    console.log("Is today payday?:", isTodayPayday);
 
-    // Include today as a full week if it's payday
-    const totalWeeks = fullWeeksFromStart + (isTodayPayday ? 1 : 0);
-    console.log("Total Weeks Passed (including today if payday):", totalWeeks);
+    // Total paydays is full weeks plus one for the first payday and another if today is payday
+    const totalPaydays = fullWeeksFromFirstPayday + 1 + (isTodayPayday ? 1 : 0);
 
-    const totalIncome = totalWeeks * income;
-    console.log("Total Income:", totalIncome);
+    const totalIncome = totalPaydays * income;
 
     return totalIncome;
   };
 
   const totalIncome = calculateTotalIncome();
-  console.log(totalIncome);
   // Net income
   const netIncome = totalIncome - totalExpenses;
 
